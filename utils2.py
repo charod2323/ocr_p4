@@ -5,15 +5,16 @@ from bs4 import BeautifulSoup
 
 
 class Book:
-    def __init__(self, title, unit_price):
+    def __init__(self,title, unit_price):
         self.title = title
         self.unit_price = unit_price
 
 
 class Category:
-    def __init__(self, url, title):
-        self.url = url
+    def __init__(self, url,title,pages):
         self.title = title
+        self.url = url
+        self.pages = pages
 
     @classmethod
     def get_categories_urls(cls):
@@ -52,14 +53,48 @@ class Category:
             book_urls.append(href.replace('../../../', 'https://books.toscrape.com/catalogue/'))
         return book_urls
 
+    def all_pagination(self):
+        """
+        return all pages
+        """
+        listUrlCategories = []
+        x = 0
+        w = 0
+
+
+        for i in self.pages:
+            w = w + 1
+            p = "page-" + str(x + 1) + ".html"
+            url4 = self.pages[w - 1].replace("index.html", p)
+            page = requests.get(url4)
+            soup = BeautifulSoup(page.content, 'html.parser')
+            status = page.status_code
+            if status == 200:
+                f = soup.find('li', {'class': 'current'})
+                a = str(f)
+                b = a[60:61]
+                c = int(b)
+                for i in range(c):
+                    p = "page-" + str(i + 1) + ".html"
+                    url4 = self.pages[w - 1].replace("index.html", p)
+                    listUrlCategories.append(url4)
+            else:
+                listUrlCategories.append(self.pages[w - 1])
+        return listUrlCategories
+
 
 if __name__ == "__main__":
     book_1 = Book("Le seigneur des anneaux", 20)
     print(book_1.unit_price)
 
     urls = Category.get_categories_urls()
-    print('urls:', urls)
+    print('urls:\n',"\n".join(urls))
 
-    fantasy_category = Category("https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html", "Fantasy")
+    fantasy_category = Category("https://books.toscrape.com/catalogue/category/books/fantasy_19/index.html","Fantasy","listUrlCategorie")
+
     fantasy_category_books_urls = fantasy_category.get_books_url()
-    print("fantasy_category_books_urls:", fantasy_category_books_urls)
+    print('fantasy_category_books_urls:\n',"\n". join(fantasy_category_books_urls))
+
+    Allpages = fantasy_category.all_pagination()
+    print('url all pages:\n', "\n".join(Allpages))
+
