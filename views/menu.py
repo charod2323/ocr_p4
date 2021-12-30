@@ -8,9 +8,9 @@ class MenuView:
 class PlayerView:
     def run(self):
         for c in range(2):
-            print("identification player number: ", compteur)
-            p.lastname = input("enter lastname: ")
-            print(p.lastname)
+            print("identification player number: ")
+            lastname = input("enter lastname: ")
+            print(lastname)
 
 
 class TournamentView:

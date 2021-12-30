@@ -7,5 +7,3 @@ class Player:
         self.sex = sex
 
 
-    def getusername(self):
-        return self.lastname
