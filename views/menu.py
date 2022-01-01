@@ -28,18 +28,18 @@ class PlayerView:
     def run(self):
         print("")
 
+        count = 0
+        i = 0
+        numberplayers = 0
         numberplayers = input("how many players ??:  ")
         try:
             numberplayers = int(numberplayers)
         except ValueError:
             sys.exit("you must enter an integer")
 
-        count = 0
+        for counts in range(numberplayers):
 
-
-
-
-        while count < numberplayers:
+            result = {}
             print("")
             print("the player number {}".format(count + 1))
             print("")
@@ -50,23 +50,12 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
+            nameList = "player" + str(i + 1)
+            result[nameList] = []
 
-            def createList(name, n):
-                result = {}
-                for i in range(n):
-                    nameList = name + str(i + 1)
-                    result[nameList] = []
-
-
-                    res = createList("player", numberplayers)
-                    res["player"+str(count+1)].extend([lastname])
-                    print(res)
-                return result
-
-
-
-
-
+            result["player" + str(count + 1)].extend([lastname])
+            print(result)
+            return result
 
 
 class TournamentView:
