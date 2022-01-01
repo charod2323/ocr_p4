@@ -28,7 +28,7 @@ class PlayerView:
     def run(self):
         print("")
 
-        count = 0
+        counts = 0
         i = 0
         numberplayers = 0
         numberplayers = input("how many players ??:  ")
@@ -39,9 +39,10 @@ class PlayerView:
 
         for counts in range(numberplayers):
 
+
             result = {}
             print("")
-            print("the player number {}".format(count + 1))
+            print("the player number {}".format(counts+1))
             print("")
 
             lastname = input("lastname? : ")
@@ -50,12 +51,19 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
-            nameList = "player" + str(i + 1)
-            result[nameList] = []
 
-            result["player" + str(count + 1)].extend([lastname])
-            print(result)
-            return result
+            def createList(name, n):
+                result = {}
+                for i in range(n):
+                    nameList = name + str(i + 1)
+                    result[nameList] = []
+                return result
+
+            res = createList("player", numberplayers)  # création de 5 listes dont le nom commence par list
+
+
+
+            print(res)  # {'list1': [], 'list5':
 
 
 class TournamentView:
