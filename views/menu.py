@@ -59,11 +59,11 @@ class PlayerView:
                     result[nameList] = []
                 return result
 
-            res = createList("player", numberplayers)  # création de 5 listes dont le nom commence par list
+            res = createList("player", 5)
 
+            res["player3"].extend([2, 4])
 
-
-            print(res)  # {'list1': [], 'list5':
+            print(res)
 
 
 class TournamentView:
