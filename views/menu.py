@@ -17,13 +17,10 @@ class MenuView:
         print("                          7         report                                      ")
         print("                          8     return choice 4                                 ")
         print("                          9          quit                                       ")
+        print("                                                                                ")
 
-        choice = input("Enter your choice: ")
+        choice = input("Enter your choice:  ")
         return choice
-
-
-
-
 
 
 class PlayerView:
@@ -31,16 +28,16 @@ class PlayerView:
     def run(self):
         print("")
 
-        numberplayers = input("how many players??: ")
+        numberplayers = input("how many players ??:  ")
         try:
             numberplayers = int(numberplayers)
         except ValueError:
             sys.exit("you must enter an integer")
 
-        player_info = []
-
         count = 0
-        results = {}
+        players = []
+
+        number_player = {}
 
         while count < numberplayers:
             print("")
@@ -53,27 +50,13 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
-            count = count + 1
-            player_info.extend([lastname])
 
-            name = "list"
-            numberlist = 0
-            i = 0
-            n = numberplayers
-            for i in range(n):
-                nameList = name + str(i + 1)
-                results[nameList] = []
-
-                results["list" + str(i + 1 )].append([lastname])  # on ajoute 2 à list3
-                print(results)  # {'list1': [], 'list5': [], 'list2': [], 'list4': [], 'list3': [2]}
-
+            number_player['lastname'] = lastname
+            print("")
+            print("the player identity:  ")
+            print("")
+            print(lastname.center(100, ' '))
             return
-
-
-
-
-
-        return
 
 
 class TournamentView:
@@ -84,8 +67,3 @@ class TournamentView:
 class LeaveView:
     def run(self):
         sys.exit()
-
-
-
-
-
