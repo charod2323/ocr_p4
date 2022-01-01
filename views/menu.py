@@ -56,15 +56,17 @@ class PlayerView:
                 for i in range(n):
                     nameList = name + str(i + 1)
                     result[nameList] = []
+
+
+                    res = createList("player", numberplayers)
+                    res["player"+str(count+1)].extend([lastname])
+                    print(res)
                 return result
 
-            res = createList("player", 5)
-            res["player3"].extend([lastname])
-            print(res)
 
 
 
-            return
+
 
 
 class TournamentView:
