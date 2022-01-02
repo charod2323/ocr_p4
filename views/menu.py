@@ -39,13 +39,14 @@ class PlayerView:
 
         for counts in range(numberplayers):
 
-
+            list_lastname = []
             result = {}
             print("")
-            print("the player number {}".format(counts+1))
+            print("the player number {}".format(counts + 1))
             print("")
 
             lastname = input("lastname? : ")
+            list_lastname.append(lastname)
             firstname = input("firstname? : ")
             birth_date = input("birth_date? : ")
             sex = input("sex m/f? : ")
@@ -53,15 +54,16 @@ class PlayerView:
             rank = input("rank /10? : ")
 
             def createList(name, n):
+
                 result = {}
+
                 for i in range(n):
                     nameList = name + str(i + 1)
                     result[nameList] = []
+
                 return result
 
-            res = createList("player", 5)
-
-            res["player3"].extend([2, 4])
+            res = createList("player", 3)
 
             print(res)
 
