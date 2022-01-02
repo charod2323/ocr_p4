@@ -54,7 +54,6 @@ class PlayerView:
             rank = input("rank /10? : ")
 
             def createList(name, n):
-
                 result = {}
 
                 for i in range(n):
