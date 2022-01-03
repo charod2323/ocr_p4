@@ -26,11 +26,7 @@ class MenuView:
 class PlayerView:
 
     def run(self):
-        print("")
 
-        counts = 0
-        i = 0
-        numberplayers = 0
         numberplayers = input("how many players ??:  ")
         try:
             numberplayers = int(numberplayers)
@@ -39,32 +35,29 @@ class PlayerView:
 
         for counts in range(numberplayers):
 
-            list_lastname = []
-            result = {}
-            print("")
+            print()
             print("the player number {}".format(counts + 1))
-            print("")
+            print()
+            lastname = ""
+            while lastname == "":
+                lastname = input("lastname? : ")
 
-            lastname = input("lastname? : ")
-            list_lastname.append(lastname)
-            firstname = input("firstname? : ")
+            firstname = ""
+            while firstname == "":
+                firstname = input("firstname? : ")
+
             birth_date = input("birth_date? : ")
-            sex = input("sex m/f? : ")
+
+            sex = ""
+            while sex != "m" or sex !="f":
+                sex = input("sex m/f? : ")
+
             age = input("age? : ")
+            try:
+                age = int(age)
+            except ValueError:
+                sys.exit("you must enter an integer")
             rank = input("rank /10? : ")
-
-            def createList(name, n):
-                result = {}
-
-                for i in range(n):
-                    nameList = name + str(i + 1)
-                    result[nameList] = []
-
-                return result
-
-            res = createList("player", 3)
-
-            print(res)
 
 
 class TournamentView:
