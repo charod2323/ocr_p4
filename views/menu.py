@@ -34,7 +34,7 @@ class PlayerView:
             sys.exit("you must enter an integer")
 
         for counts in range(numberplayers):
-            i=0
+            i = 0
             player = "player"
             print()
             print("the player number {}".format(counts + 1))
@@ -49,16 +49,16 @@ class PlayerView:
             age = input("age? : ")
             rank = input("rank /10? : ")
             print()
-            print("player identity {}".format(counts + 1))
+            print("player{}".format(counts + 1), "identity")
             print()
-            print(lastname.center(100))
-            print(firstname.center(100))
-            print(birth_date.center(100))
-            print(birth_month.center(100))
-            print(birth_year.center(100))
-            print(sex.center(100))
-            print(age.center(100))
-            print(rank.center(100))
+            print("lastname => ", lastname)
+            print("firstname => ", firstname)
+            print("birth_date => ", birth_date)
+            print("birth_month => ", birth_month)
+            print("birth_year => ", birth_year)
+            print("sex => ", sex)
+            print("age =>", age)
+            print("rank =>", rank)
 
 
             def createList(name, n):
@@ -70,9 +70,11 @@ class PlayerView:
 
             res = createList("player", numberplayers)
 
-            for i in range(numberplayers):
-                res["player" + str(i + 1)].extend([lastname,firstname])
 
+            res["player" + str(i + 1 )].extend(
+                    [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
+
+            print("data :")
             print(res)
 
 
