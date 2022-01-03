@@ -42,10 +42,9 @@ class PlayerView:
 
             lastname = input("lastname? : ")
             firstname = input("firstname? : ")
-            print("birth_date? : ")
-            date = input("date? : ")
-            month = input("month? : ")
-            year = input("year? : ")
+            birth_date = input("birth_date? : ")
+            birth_month = input("birth_month? : ")
+            birth_year = input("birth_year? : ")
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
@@ -54,28 +53,27 @@ class PlayerView:
             print()
             print(lastname.center(100))
             print(firstname.center(100))
-            print("birth_date".center(100))
-            print(date.center(100))
-            print(month.center(100))
-            print(year.center(100))
+            print(birth_date.center(100))
+            print(birth_month.center(100))
+            print(birth_year.center(100))
             print(sex.center(100))
             print(age.center(100))
             print(rank.center(100))
 
 
-        def createList(name, n):
-            result = {}
-            for i in range(n):
-                nameList = name + str(i + 1)
-                result[nameList] = []
-            return result
+            def createList(name, n):
+                result = {}
+                for i in range(n):
+                    nameList = name + str(i + 1)
+                    result[nameList] = []
+                return result
 
-        res = createList("player", numberplayers)
+            res = createList("player", numberplayers)
 
-        for i in range(numberplayers):
-            res["player" + str(i + 1)].extend([1])
+            for i in range(numberplayers):
+                res["player" + str(i + 1)].extend([lastname,firstname])
 
-        print(res)
+            print(res)
 
 
 class TournamentView:
