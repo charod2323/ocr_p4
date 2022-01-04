@@ -27,19 +27,16 @@ class MenuView:
 class PlayerView:
 
     def run(self):
-
-        numberplayers = input("how many players (8 by default)??:  ")
+        i = 0
+        numberplayers = input("how many players??:  ")
         try:
             numberplayers = int(numberplayers)
         except ValueError:
             sys.exit("you must enter an integer")
-
-        i = 0
-        while numberplayers != 8:
-            i = i + 1
+        for i in range(numberplayers):
             player = "player"
             print()
-            print("the player number {}".format(i + 1))
+            print("the player number {}".format(i+1))
             print()
 
             lastname = input("lastname? : ")
@@ -64,19 +61,22 @@ class PlayerView:
 
             def createList(name, n):
                 result = {}
+                list = []
                 for i in range(n):
                     nameList = name + str(i + 1)
                     result[nameList] = []
                 return result
-
+            count = 0
             res = createList("player", numberplayers)
 
-            res["player" + str(i + 1)].extend(
-                [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
+            res["player" + str(i+1)].extend([lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
 
-            print("data :")
+            print("data:")
             print(res)
+            print(res.get("player"+str(i+1))[0])
 
+class GamesView:
+    pass
 
 class TournamentView:
     def run(self):
@@ -85,7 +85,7 @@ class TournamentView:
         while nbrround != 4:
             print()
             start_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
-            print(f" start of the round {i+1}: {start_time}")
+            print(f" start of the round {i + 1}: {start_time}")
             return
 
 
