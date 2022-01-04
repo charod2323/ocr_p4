@@ -31,7 +31,7 @@ class MenuView:
         print()
         print()
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~press key 1 to start~~~~~~~~~~~~~~~~~~~~~~")
-        started = input("  ")
+        started = input("                                       ")
         return started
 
 
@@ -70,21 +70,21 @@ class PlayerView:
             print("age =>", age)
             print("rank =>", rank)
 
-            def createList(name, n):
-                result = {}
-                list = []
-                for i in range(n):
-                    nameList = name + str(i + 1)
-                    result[nameList] = []
-                return result
-            count = 0
-            res = createList("player", numberplayers)
 
-            res["player" + str(i+1)].extend([lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
+            result = {}
+            list = []
+            for i in range(numberplayers):
+                nameList = player + str(i+1)
+                result[nameList] = []
+
+
+
+
+            result["player" + str(i+1)].extend([lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
 
             print("data:")
-            print(res)
-            print(res.get("player" + str(i + 1))[0])
+            print(result)
+            print(result.get("player" + str(i + 1))[0])
 
 
 class GamesView:
