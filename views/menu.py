@@ -80,11 +80,12 @@ class PlayerView:
 
 class TournamentView:
     def run(self):
+        i = 0
         nbrround = input("how many rounds (4 by default):  ")
         while nbrround != 4:
             print()
-            begin_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
-            print(f"Début du tour : {begin_time}")
+            start_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
+            print(f" start of the round {i+1}: {start_time}")
             return
 
 
