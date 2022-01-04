@@ -1,4 +1,5 @@
 import sys
+import time
 
 
 class MenuView:
@@ -27,17 +28,18 @@ class PlayerView:
 
     def run(self):
 
-        numberplayers = input("how many players ??:  ")
+        numberplayers = input("how many players (8 by default)??:  ")
         try:
             numberplayers = int(numberplayers)
         except ValueError:
             sys.exit("you must enter an integer")
 
-        for counts in range(numberplayers):
-            i = 0
+        i = 0
+        while numberplayers != 8:
+            i = i + 1
             player = "player"
             print()
-            print("the player number {}".format(counts + 1))
+            print("the player number {}".format(i + 1))
             print()
 
             lastname = input("lastname? : ")
@@ -49,7 +51,7 @@ class PlayerView:
             age = input("age? : ")
             rank = input("rank /10? : ")
             print()
-            print("player{}".format(counts + 1), "identity")
+            print("player{}".format(i + 1), "identity")
             print()
             print("lastname => ", lastname)
             print("firstname => ", firstname)
@@ -60,7 +62,6 @@ class PlayerView:
             print("age =>", age)
             print("rank =>", rank)
 
-
             def createList(name, n):
                 result = {}
                 for i in range(n):
@@ -70,9 +71,8 @@ class PlayerView:
 
             res = createList("player", numberplayers)
 
-
-            res["player" + str(i + 1 )].extend(
-                    [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
+            res["player" + str(i + 1)].extend(
+                [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
 
             print("data :")
             print(res)
@@ -80,7 +80,12 @@ class PlayerView:
 
 class TournamentView:
     def run(self):
-        pass
+        nbrround = input("how many rounds (4 by default):  ")
+        while nbrround != 4:
+            print()
+            begin_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
+            print(f"Début du tour : {begin_time}")
+            return
 
 
 class LeaveView:
