@@ -1,4 +1,3 @@
-import random
 import sys
 import time
 
@@ -90,16 +89,26 @@ class PlayerView:
             list_data_players.append(data_players)
 
 
-class GamesView:
+class GamesView(PlayerView):
     def run(self):
-        games = []
+        i = 0
         score = [0, 0.5, 1]
 
         print("...........match.......unique........")
+
+        # presenter les players
+        # commencer le match
         # demarrer le chrono
-        # fin de game arreter le chrono
+        start_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
+        print(f" start of the round {i + 1}: {start_time}")
+
+        # fin de game
+        # arreter le chrono
+        end_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
+        print(f" end of the round {i + 1}: {start_time}")
+
         # afficher le gagant et le score attribué
-        # afficher le perdant
+        # afficher le perdant et le score attribué
         nbr_match_unique = int(input("how many match unique??:  "))
         for y in range(nbr_match_unique):
             pass
@@ -110,9 +119,8 @@ class TournamentView:
         i = 0
         nbrround = input("how many rounds (4 by default):  ")
         while nbrround != 4:
-            print()
-            start_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
-            print(f" start of the round {i + 1}: {start_time}")
+            pass
+
             return
 
 
