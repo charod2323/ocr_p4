@@ -1,10 +1,10 @@
+import random
 import sys
 import time
 
 
 class MenuView:
     def run(self):
-
         print("                                CREATE A PLAYER                                 ")
         print("                                                                                ")
         print("                           1  create a new players                              ")
@@ -47,7 +47,7 @@ class PlayerView:
         for i in range(numberplayers):
             player = "player"
             print()
-            print("the player number {}".format(i+1))
+            print("the player number {}".format(i + 1))
             print()
 
             lastname = input("lastname? : ")
@@ -59,7 +59,7 @@ class PlayerView:
             age = input("age? : ")
             rank = input("rank /10? : ")
             print()
-            print("player{}".format(i + 1), "identity")
+            print("player{}".format(i + 1) + "identity")
             print()
             print("lastname => ", lastname)
             print("firstname => ", firstname)
@@ -69,40 +69,40 @@ class PlayerView:
             print("sex => ", sex)
             print("age =>", age)
             print("rank =>", rank)
+            print()
+            print()
 
+            list_data_players = []
 
-            result = {}
-            list = []
-            for i in range(numberplayers):
-                nameList = player + str(i+1)
-                result[nameList] = []
+            key_player = "key_player"
+            key_players = key_player + str(i + 1)
+            value_player = "value_player"
+            value_players = value_player + str(i + 1)
+            data_player = "data_player"
+            data_players = data_player + str(i + 1)
 
-
-
-
-            result["player" + str(i+1)].extend([lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank])
-
-            print("data:")
-            print(result)
-            print(result.get("player" + str(i + 1))[0])
+            key_players = ['lastname', 'firstname', 'birth_date', 'birth_month', 'birth_year', 'sex', 'age', 'rank']
+            value_players = [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank]
+            data_players = dict(zip(key_players, value_players))
+            print("                                                  DATA PLAYERS                                    ")
+            print()
+            print(data_players)
+            list_data_players.append(data_players)
 
 
 class GamesView:
     def run(self):
-
         games = []
-        score = [0,0.5,1]
+        score = [0, 0.5, 1]
+
         print("...........match.......unique........")
+        # demarrer le chrono
+        # fin de game arreter le chrono
+        # afficher le gagant et le score attribué
+        # afficher le perdant
         nbr_match_unique = int(input("how many match unique??:  "))
         for y in range(nbr_match_unique):
             pass
-
-
-
-
-
-
-
 
 
 class TournamentView:
