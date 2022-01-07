@@ -1,5 +1,6 @@
 import sys
 import time
+import secrets
 
 
 class MenuView:
@@ -89,7 +90,7 @@ class PlayerView:
             list_data_players.append(data_players)
 
 
-class GamesView(PlayerView):
+class GamesView():
     def run(self):
         i = 0
         score = [0, 0.5, 1]
@@ -116,12 +117,32 @@ class GamesView(PlayerView):
 
 class TournamentView:
     def run(self):
-        i = 0
-        nbrround = input("how many rounds (4 by default):  ")
-        while nbrround != 4:
-            pass
+        choice = []
 
-            return
+        def createList(name, n):
+            result = {}  # on crée un dico
+            for i in range(n):  # nbr clé/valeur
+                nameList = name + str(i + 1)  # nom des listes / clé
+                result[nameList] = []  #
+            return result
+
+        res = createList("pair_match", 2)  # création de 5 listes dont le nom commence par list
+
+        # print(res)   {'list1': [], 'list5': [], 'list2': [], 'list4': [], 'list3': [2]}
+
+        names = ['John', 'kevin', 'karl', 'murdock', 'bond', 'log']
+
+        names_choice = secrets.choice(names)
+        choice.append(names_choice)
+
+        choices_name = secrets.choice(names)
+        choice.append(choices_name)
+
+        res["pair_match2"].extend([names_choice, choices_name])  # on ajoute 2 à list3
+
+        print(res)
+        print(choice[0])
+        print(choice[1])
 
 
 class LeaveView:
