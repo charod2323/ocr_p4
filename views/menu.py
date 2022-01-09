@@ -4,6 +4,9 @@ import time
 
 class MenuView:
     def run(self):
+        print("                                                                                ")
+        print("                                                                                ")
+        print("                                                                                ")
         print("                                CREATE A PLAYER                                 ")
         print("                                                                                ")
         print("                           1  create a new players                              ")
@@ -11,23 +14,19 @@ class MenuView:
         print("                           3       report                                       ")
         print("                                                                                ")
         print("                                                                                ")
-        print("                                 CREATE A GAME                                  ")
-        print("                                                                                ")
-        print("                           5        print players                               ")
-        print("                           6           scores                                   ")
-        print("                           7           report                                   ")
         print("                                                                                ")
         print("                                                                                ")
         print("                                CREATE A TOURNAMENT                             ")
         print("                                                                                ")
-        print("                           9  create a new tournament                           ")
-        print("                           10         scores                                    ")
-        print("                           11         report                                    ")
-        print("                           q          quit                                     ")
+        print("                           4  create a new tournament                           ")
+        print("                           5         scores                                    ")
+        print("                           6         report                                    ")
+        print("                           q          quit                                      ")
         print("                                                                                ")
         print()
         print()
         print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~press key 1 to start~~~~~~~~~~~~~~~~~~~~~~")
+        print()
         started = input("                                       ")
         return started
 
@@ -36,7 +35,7 @@ class PlayerView:
 
     def run(self):
         i = 0
-        numberplayers = input("how many players??:  ")
+        numberplayers = input("how many players (8 players maximum)??:  ")
         try:
             numberplayers = int(numberplayers)
         except ValueError:
@@ -82,8 +81,9 @@ class PlayerView:
             data_players = dict(zip(key_players, value_players))
             print("                                                  DATA PLAYERS                                    ")
             print()
-            print(data_players)
+
             players.append(data_players)
+
 
         return players
 
@@ -115,10 +115,10 @@ class GamesView(PlayerView):
 
 class TournamentView:
     def run(self, players):
-        print(f"{players=}")
-        i = 0
-        nbrround = input("how many rounds (4 by default):  ")
-        # tournament_controller ...
+        for i in range(2):
+            print("list of players who will face each other:  ")
+            print(players[0]['lastname'])
+
 
 class LeaveView:
     def run(self):

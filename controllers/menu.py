@@ -11,7 +11,7 @@ class MenuController:
             if started == "1":
                 player_view = PlayerView()
                 players = player_view.run()
-            if players and started == "9":
+            if started == "4":
                 tournament_view = TournamentView()
                 tournament_view.run(players)
             if started == "q":
