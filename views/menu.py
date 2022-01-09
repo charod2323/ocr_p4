@@ -1,6 +1,5 @@
 import sys
 import time
-import secrets
 
 
 class MenuView:
@@ -10,7 +9,6 @@ class MenuView:
         print("                           1  create a new players                              ")
         print("                           2  classification update                             ")
         print("                           3       report                                       ")
-        print("                           4         quit                                       ")
         print("                                                                                ")
         print("                                                                                ")
         print("                                 CREATE A GAME                                  ")
@@ -18,7 +16,6 @@ class MenuView:
         print("                           5        print players                               ")
         print("                           6           scores                                   ")
         print("                           7           report                                   ")
-        print("                           8           quit                                     ")
         print("                                                                                ")
         print("                                                                                ")
         print("                                CREATE A TOURNAMENT                             ")
@@ -26,7 +23,7 @@ class MenuView:
         print("                           9  create a new tournament                           ")
         print("                           10         scores                                    ")
         print("                           11         report                                    ")
-        print("                           12          quit                                     ")
+        print("                           q          quit                                     ")
         print("                                                                                ")
         print()
         print()
@@ -44,6 +41,7 @@ class PlayerView:
             numberplayers = int(numberplayers)
         except ValueError:
             sys.exit("you must enter an integer")
+        players = []
         for i in range(numberplayers):
             player = "player"
             print()
@@ -72,8 +70,6 @@ class PlayerView:
             print()
             print()
 
-            list_data_players = []
-
             key_player = "key_player"
             key_players = key_player + str(i + 1)
             value_player = "value_player"
@@ -87,10 +83,12 @@ class PlayerView:
             print("                                                  DATA PLAYERS                                    ")
             print()
             print(data_players)
-            list_data_players.append(data_players)
+            players.append(data_players)
+
+        return players
 
 
-class GamesView():
+class GamesView(PlayerView):
     def run(self):
         i = 0
         score = [0, 0.5, 1]
@@ -116,34 +114,11 @@ class GamesView():
 
 
 class TournamentView:
-    def run(self):
-        choice = []
-
-        def createList(name, n):
-            result = {}  # on crée un dico
-            for i in range(n):  # nbr clé/valeur
-                nameList = name + str(i + 1)  # nom des listes / clé
-                result[nameList] = []  #
-            return result
-
-        res = createList("pair_match", 2)  # création de 5 listes dont le nom commence par list
-
-        # print(res)   {'list1': [], 'list5': [], 'list2': [], 'list4': [], 'list3': [2]}
-
-        names = ['John', 'kevin', 'karl', 'murdock', 'bond', 'log']
-
-        names_choice = secrets.choice(names)
-        choice.append(names_choice)
-
-        choices_name = secrets.choice(names)
-        choice.append(choices_name)
-
-        res["pair_match2"].extend([names_choice, choices_name])  # on ajoute 2 à list3
-
-        print(res)
-        print(choice[0])
-        print(choice[1])
-
+    def run(self, players):
+        print(f"{players=}")
+        i = 0
+        nbrround = input("how many rounds (4 by default):  ")
+        # tournament_controller ...
 
 class LeaveView:
     def run(self):
