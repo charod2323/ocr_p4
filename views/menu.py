@@ -1,10 +1,17 @@
 import sys
 import time
+import secrets
 
 
 class MenuView:
     def run(self):
         import sys, time
+        banner = "                   CHESS TOURNAMENT              "
+        for char in banner:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.01)
+        print()
 
         message = "              CREATE A NEW PLAYER         \n " \
                   "                                          \n " \
@@ -31,7 +38,7 @@ class MenuView:
             time.sleep(0.01)
         print()
         started = input("                                       ")
-        time.sleep(2)
+        time.sleep(1)
         return started
 
 
@@ -44,7 +51,7 @@ class PlayerView:
         i = 0
         numberplayers = 2
         print()
-        info = "************************************************************  YOU MUST BE CREATE 8 PLAYERS  ************************"
+        info = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~ YOU MUST BE CREATE 8 PLAYERS  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
@@ -53,7 +60,8 @@ class PlayerView:
         for i in range(numberplayers):
             player = "player"
             print()
-            print("the player number {}".format(i + 1))
+            print("THE PlAYER NUMBER {}".format(i + 1))
+            print()
             print()
 
             lastname = input("lastname? : ")
@@ -65,14 +73,13 @@ class PlayerView:
             age = input("age? : ")
             rank = input("rank /10? : ")
             print()
-            print("player{} ".format(i + 1) + " <identity and rank>")
+            print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
             print("firstname => ", firstname)
             print("rank =>", rank)
             print()
-            print()
-
+            time.sleep(1)
             key_player = "key_player"
             key_players = key_player + str(i + 1)
             value_player = "value_player"
@@ -124,19 +131,22 @@ class TournamentView:
         score = [0, 0.5, 1]
         print()
         print()
-        info = "**********************  THE TOURNAMENT BEGINS  ********************************"
+        info = "------------------ THE TOURNAMENT BEGINS  --------------"
         i = 0
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.100)
-
-        print()
+        # VOIR SCHEMA DES TOURNOIS
+        #print("how many matchs do you want to do (even number)")
         print("THE MATCH NUMBER {}".format(i + 1))
         print()
         print(players[0]['lastname'])
         print("vs")
         print(players[1]['lastname'])
+        number_core1 = secrets.choice(score)
+        number_core2 = secrets.choice(score)
+
         print("THE WINNER IS")
 
 
