@@ -139,22 +139,25 @@ class TournamentView:
             sys.stdout.flush()
             time.sleep(0.100)
 
-        print("how many matchs do you want to do (even number)")
-        number_core1 = secrets.choice(score)
-        number_core2 = secrets.choice(score)
-        print()
-        print("THE MATCH NUMBER {}".format(i + 1))
-        print()
-        print((players[0]['lastname'].upper()).center(50), number_core1)
-        print("VS".center(50))
-        print((players[1]['lastname'].upper()).center(50), number_core2)
-        time.sleep(2)
-        if number_core1 == number_core2:
-            print("EGALITY")
-        elif number_core1 > number_core2:
-            print("THE WINNER IS", players[0]['lastname'])
-        else:
-            print("THE WINNER IS", players[1]['lastname'])
+        nbr_match = int(input("how many matchs do you want to do (even number)"))
+        while nbr_match % 2 != 0:
+            print("............you must enter an even number...........")
+        for i in range(nbr_match):
+            number_core1 = secrets.choice(score)
+            number_core2 = secrets.choice(score)
+            print()
+            print("THE MATCH NUMBER {}".format(i + 1))
+            print()
+            print((players[0]['lastname'].upper()).center(50), number_core1)
+            print("VS".center(50))
+            print((players[1]['lastname'].upper()).center(50), number_core2)
+            time.sleep(2)
+            if number_core1 == number_core2:
+                print("EGALITY")
+            elif number_core1 > number_core2:
+                print("THE WINNER IS", players[0]['lastname'])
+            else:
+                print("THE WINNER IS", players[1]['lastname'])
 
 
 
