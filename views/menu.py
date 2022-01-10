@@ -23,7 +23,7 @@ class MenuView:
                   "         7          quit                   \n " \
                   "                                           \n" \
                   "                                           \n" \
-                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENTER THE NUMBER OF YOUR CHOICE~~~~~~~~~~~~~~~~~~~~~~ "
+                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENTER THE NUMBER OF YOUR CHOICE~~~~~~~~~~~~~~~~~~~~~~ "
 
         for char in message:
             sys.stdout.write(char)
@@ -31,6 +31,7 @@ class MenuView:
             time.sleep(0.01)
         print()
         started = input("                                       ")
+        time.sleep(2)
         return started
 
 
@@ -43,7 +44,7 @@ class PlayerView:
         i = 0
         numberplayers = 2
         print()
-        info = "**********************  YOU MUST BE CREATE 8 PLAYERS  ********************************"
+        info = "************************************************************  YOU MUST BE CREATE 8 PLAYERS  ************************"
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
@@ -117,23 +118,26 @@ class GamesView(PlayerView):
 
 class TournamentView:
     def run(self, players):
+        match = []
+        score_winner = []
+        score_losing = []
+        score = [0, 0.5, 1]
+        print()
+        print()
         info = "**********************  THE TOURNAMENT BEGINS  ********************************"
         i = 0
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.100)
-        match = []
-        score_winner = []
-        score_losing = []
 
         print()
         print("THE MATCH NUMBER {}".format(i + 1))
         print()
-
         print(players[0]['lastname'])
         print("vs")
         print(players[1]['lastname'])
+        print("THE WINNER IS")
 
 
 class LeaveView:
