@@ -1,16 +1,12 @@
+import secrets
 import sys
 import time
-import secrets
 
 
 class MenuView:
     def run(self):
         import sys, time
-        banner = "                   CHESS TOURNAMENT              "
-        for char in banner:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.01)
+        print("                                                                       CHESS TOURNAMENT              ")
         print()
 
         message = "              CREATE A NEW PLAYER         \n " \
@@ -51,7 +47,7 @@ class PlayerView:
         i = 0
         numberplayers = 2
         print()
-        info = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~ YOU MUST BE CREATE 8 PLAYERS  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        info = "~~~~~~~~~~~~~~~ YOU MUST BE CREATE 8 PLAYERS  ~~~~~~~~~~~~~~~~"
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
@@ -125,6 +121,11 @@ class GamesView(PlayerView):
 
 class TournamentView:
     def run(self, players):
+        tournament_name = []
+        tournament_place = []
+        tournament_date = []
+        tournament_nbr_rounds = []
+        tournament_description = []
         match = []
         score_winner = []
         score_losing = []
@@ -137,17 +138,21 @@ class TournamentView:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.100)
-        # VOIR SCHEMA DES TOURNOIS
-        #print("how many matchs do you want to do (even number)")
-        print("THE MATCH NUMBER {}".format(i + 1))
-        print()
-        print(players[0]['lastname'])
-        print("vs")
-        print(players[1]['lastname'])
+
+        # print("how many matchs do you want to do (even number)")
         number_core1 = secrets.choice(score)
         number_core2 = secrets.choice(score)
-
-        print("THE WINNER IS")
+        print()
+        print("THE MATCH NUMBER {}".format(i + 1))
+        print()
+        print((players[0]['lastname'].upper()).center(50), number_core1)
+        print("VS".center(50))
+        print((players[1]['lastname'].upper()).center(50), number_core2)
+        time.sleep(2)
+        if number_core1 > number_core2:
+            print("THE WINNER IS",players[0]['lastname'].upper())
+        else:
+            print("THE WINNER IS", players[1]['lastname'].upper())
 
 
 class LeaveView:
