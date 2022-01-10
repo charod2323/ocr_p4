@@ -4,28 +4,31 @@ import time
 
 class MenuView:
     def run(self):
-        print("                                                                                ")
-        print("                                                                                ")
-        print("                                                                                ")
-        print("                                CREATE A PLAYER                                 ")
-        print("                                                                                ")
-        print("                           1  create a new players                              ")
-        print("                           2  classification update                             ")
-        print("                           3       report                                       ")
-        print("                                                                                ")
-        print("                                                                                ")
-        print("                                                                                ")
-        print("                                                                                ")
-        print("                                CREATE A TOURNAMENT                             ")
-        print("                                                                                ")
-        print("                           4  create a new tournament                           ")
-        print("                           5         scores                                    ")
-        print("                           6         report                                    ")
-        print("                           q          quit                                      ")
-        print("                                                                                ")
-        print()
-        print()
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~press key 1 to start~~~~~~~~~~~~~~~~~~~~~~")
+        import sys, time
+
+        message = "              CREATE A NEW PLAYER         \n " \
+                  "                                          \n " \
+                  "        1   create a new players          \n " \
+                  "        2   classification update         \n " \
+                  "        3        report                   \n " \
+                  "                                          \n " \
+                  "                                          \n" \
+                  "                                          \n" \
+                  "                                          \n" \
+                  "             CREATE A TOURNAMENT          \n " \
+                  "                                          \n " \
+                  "        4 create a new tournament         \n " \
+                  "        5         scores                  \n " \
+                  "        6         report                  \n" \
+                  "         7          quit                   \n " \
+                  "                                           \n" \
+                  "                                           \n" \
+                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENTER THE NUMBER OF YOUR CHOICE~~~~~~~~~~~~~~~~~~~~~~ "
+
+        for char in message:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.01)
         print()
         started = input("                                       ")
         return started
@@ -34,13 +37,18 @@ class MenuView:
 class PlayerView:
 
     def run(self):
-        i = 0
-        numberplayers = input("how many players (8 players maximum)??:  ")
-        try:
-            numberplayers = int(numberplayers)
-        except ValueError:
-            sys.exit("you must enter an integer")
         players = []
+        identity_and_rank = {}
+        scores = [1, 0, 0.5]
+        i = 0
+        numberplayers = 2
+        print()
+        info = "**********************  YOU MUST BE CREATE 8 PLAYERS  ********************************"
+        for char in info:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.100)
+
         for i in range(numberplayers):
             player = "player"
             print()
@@ -56,15 +64,10 @@ class PlayerView:
             age = input("age? : ")
             rank = input("rank /10? : ")
             print()
-            print("player{}".format(i + 1) + "identity")
+            print("player{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
             print("firstname => ", firstname)
-            print("birth_date => ", birth_date)
-            print("birth_month => ", birth_month)
-            print("birth_year => ", birth_year)
-            print("sex => ", sex)
-            print("age =>", age)
             print("rank =>", rank)
             print()
             print()
@@ -79,11 +82,10 @@ class PlayerView:
             key_players = ['lastname', 'firstname', 'birth_date', 'birth_month', 'birth_year', 'sex', 'age', 'rank']
             value_players = [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank]
             data_players = dict(zip(key_players, value_players))
-            print("                                                  DATA PLAYERS                                    ")
+
             print()
 
             players.append(data_players)
-
 
         return players
 
@@ -115,9 +117,23 @@ class GamesView(PlayerView):
 
 class TournamentView:
     def run(self, players):
-        for i in range(2):
-            print("list of players who will face each other:  ")
-            print(players[0]['lastname'])
+        info = "**********************  THE TOURNAMENT BEGINS  ********************************"
+        i = 0
+        for char in info:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.100)
+        match = []
+        score_winner = []
+        score_losing = []
+
+        print()
+        print("THE MATCH NUMBER {}".format(i + 1))
+        print()
+
+        print(players[0]['lastname'])
+        print("vs")
+        print(players[1]['lastname'])
 
 
 class LeaveView:
