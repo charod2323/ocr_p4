@@ -33,7 +33,7 @@ class MenuView:
             sys.stdout.flush()
             time.sleep(0.01)
         print()
-        started = input("                                       ")
+        started = input("                                       ??  ")
         time.sleep(1)
         return started
 
@@ -45,18 +45,17 @@ class PlayerView:
         identity_and_rank = {}
         scores = [1, 0, 0.5]
         i = 0
-        numberplayers = 2
+        numberplayers = 4
         print()
-        info = "~~~~~~~~~~~~~~~ YOU MUST BE CREATE 8 PLAYERS  ~~~~~~~~~~~~~~~~"
-        for char in info:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.100)
 
         for i in range(numberplayers):
             player = "player"
             print()
-            print("THE PlAYER NUMBER {}".format(i + 1))
+            message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
+            for char in message:
+                sys.stdout.write(char)
+                sys.stdout.flush()
+                time.sleep(0.100)
             print()
             print()
 
@@ -94,31 +93,6 @@ class PlayerView:
         return players
 
 
-class GamesView(PlayerView):
-    def run(self):
-        i = 0
-        score = [0, 0.5, 1]
-
-        print("...........match.......unique........")
-
-        # presenter les players
-        # commencer le match
-        # demarrer le chrono
-        start_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
-        print(f" start of the round {i + 1}: {start_time}")
-
-        # fin de game
-        # arreter le chrono
-        end_time = time.strftime(format("%d/%m/%Y - %Hh%Mm%Ss"))
-        print(f" end of the round {i + 1}: {start_time}")
-
-        # afficher le gagant et le score attribué
-        # afficher le perdant et le score attribué
-        nbr_match_unique = int(input("how many match unique??:  "))
-        for y in range(nbr_match_unique):
-            pass
-
-
 class TournamentView:
     def run(self, players):
         tournament_name = []
@@ -138,27 +112,30 @@ class TournamentView:
             sys.stdout.flush()
             time.sleep(0.100)
 
-        nbr_match = int(input("how many matchs do you want to do (even number)"))
+        nbr_match = int(input("how many matchs do you want to do (even number)??:  "))
         while nbr_match % 2 != 0:
+            print()
             print("............you must enter an even number...........")
         for i in range(nbr_match):
-            number_core1 = secrets.choice(score)
-            number_core2 = secrets.choice(score)
+            number_score1 = secrets.choice(score)
+            number_score2 = secrets.choice(score)
             print()
             print("THE MATCH NUMBER {}".format(i + 1))
             print()
-            print((players[0]['lastname'].upper()).center(50), number_core1)
+            print((players[i]['lastname'].upper()).center(50), number_score1)
             print("VS".center(50))
-            print((players[1]['lastname'].upper()).center(50), number_core2)
+            print((players[i + 1]['lastname'].upper()).center(50), number_score2)
             time.sleep(2)
-            if number_core1 == number_core2:
+            if number_score1 == number_score2:
                 print("EGALITY")
-            elif number_core1 > number_core2:
+            elif number_score1 > number_score2:
                 print("THE WINNER IS", players[0]['lastname'])
-                scores[players[0]] = number_core1
+                scores[players[0]] = number_score1
             else:
                 print("THE WINNER IS", players[1]['lastname'])
-                scores[players[1]] = number_core2
+                scores[players[1]] = number_score2
+
+            print(scores)
 
 
 class LeaveView:
