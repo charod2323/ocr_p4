@@ -127,8 +127,7 @@ class TournamentView:
         tournament_nbr_rounds = []
         tournament_description = []
         match = []
-        score_winner = []
-        score_losing = []
+        scores = {}
         score = [0, 0.5, 1]
         print()
         print()
@@ -156,9 +155,10 @@ class TournamentView:
                 print("EGALITY")
             elif number_core1 > number_core2:
                 print("THE WINNER IS", players[0]['lastname'])
+                scores[players[0]] = number_core1
             else:
                 print("THE WINNER IS", players[1]['lastname'])
-
+                scores[players[1]] = number_core2
 
 
 class LeaveView:
