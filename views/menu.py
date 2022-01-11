@@ -46,6 +46,7 @@ class PlayerView:
         scores = [1, 0, 0.5]
         i = 0
         numberplayers = 4
+        nbr_match = numberplayers / 2
         print()
 
         for i in range(numberplayers):
@@ -71,7 +72,6 @@ class PlayerView:
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
-            print("firstname => ", firstname)
             print("rank =>", rank)
             print()
             time.sleep(1)
@@ -116,11 +116,14 @@ class TournamentView:
         while nbr_match % 2 != 0:
             print()
             print("............you must enter an even number...........")
+        count = 0
+        count2 = 0
         for i in range(nbr_match):
+
             number_score1 = secrets.choice(score)
             number_score2 = secrets.choice(score)
             print()
-            print("THE MATCH NUMBER {}".format(i + 1))
+            print("THE MATCH NUMBER {}".format(count2+1))
             print()
             print((players[i]['lastname'].upper()).center(50), number_score1)
             print("VS".center(50))
@@ -129,13 +132,13 @@ class TournamentView:
             if number_score1 == number_score2:
                 print("EGALITY")
             elif number_score1 > number_score2:
-                print("THE WINNER IS", players[0]['lastname'])
-                scores[players[0]] = number_score1
+                print("THE WINNER IS", players[count]['lastname'].upper())
+                #scores[players[count]] = number_score1
             else:
-                print("THE WINNER IS", players[1]['lastname'])
-                scores[players[1]] = number_score2
+                print("THE WINNER IS", players[count + 1]['lastname'].upper())
+                #scores[players[count]] = number_score2
 
-            print(scores)
+
 
 
 class LeaveView:
