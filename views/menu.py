@@ -100,12 +100,12 @@ class TournamentView:
         tournament_date = []
         tournament_nbr_rounds = []
         tournament_description = []
-        match = []
+        match = {}
         scores = {}
         score = [0, 0.5, 1]
         print()
         print()
-        info = "------------------ THE TOURNAMENT BEGINS  --------------"
+        info = "------------------ THE TOURNAMENT BEGINS  --------------\n"
         i = 0
         for char in info:
             sys.stdout.write(char)
@@ -133,10 +133,12 @@ class TournamentView:
                 print("EGALITY")
             elif number_score1 > number_score2:
                 print("THE WINNER IS", players[count]['lastname'].upper())
-                #scores[players[count]] = number_score1
+                competitor = players[count]['lastname']
+                scores[competitor] = number_score1
             else:
                 print("THE WINNER IS", players[count + 1]['lastname'].upper())
-                #scores[players[count]] = number_score2
+                competitor = players[count]['lastname']
+                scores[competitor] = number_score2
 
 
 
