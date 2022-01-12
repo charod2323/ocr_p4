@@ -26,14 +26,22 @@ class MenuView:
                   "         7          quit                   \n " \
                   "                                           \n" \
                   "                                           \n" \
-                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ENTER THE NUMBER OF YOUR CHOICE~~~~~~~~~~~~~~~~~~~~~~ "
+                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~\n"\
+                  "                                                                                                        \n"\
+                  "                                                     enter the number 7 to quit                         "
 
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.01)
         print()
-        started = input("                                       ??  ")
+
+        started = int(input("                                       ??  "))
+        try:
+            started = int(started)
+        except:
+            sys.exit()
+
         time.sleep(1)
         return started
 
@@ -111,7 +119,8 @@ class TournamentView:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.100)
-
+        print()
+        print()
         nbr_match = int(input("how many matchs do you want to do (even number)??:  "))
         while nbr_match % 2 != 0:
             print()
@@ -123,7 +132,7 @@ class TournamentView:
             number_score1 = secrets.choice(score)
             number_score2 = secrets.choice(score)
             print()
-            print("THE MATCH NUMBER {}".format(count2+1))
+            print("THE MATCH NUMBER {}".format(count2 + 1))
             print()
             print((players[i]['lastname'].upper()).center(50), number_score1)
             print("VS".center(50))
@@ -140,7 +149,7 @@ class TournamentView:
                 competitor = players[count]['lastname']
                 scores[competitor] = number_score2
 
-
+            print(scores)
 
 
 class LeaveView:
