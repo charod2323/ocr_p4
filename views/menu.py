@@ -27,20 +27,24 @@ class MenuView:
                   "                                           \n" \
                   "                                           \n" \
                   " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~\n"\
-                  "                                                                                                        \n"\
-                  "                                                     enter the number 7 to quit                         "
+                  "                                                                                                        \n" \
+                  "                                                                                                        \n" \
+                  "                                                    or enter the number 7 to quit                         "
 
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.01)
         print()
+        print()
+        print()
 
-        started = int(input("                                       ??  "))
-        try:
-            started = int(started)
-        except:
-            sys.exit()
+        while True:
+            try:
+                started = int(input("                   ENTER NUMBER ONE TO START            =>: "))
+                break
+            except ValueError:
+                print("you must enter a number.")
 
         time.sleep(1)
         return started
