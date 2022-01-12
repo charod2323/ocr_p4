@@ -39,7 +39,7 @@ class MenuView:
         print()
         print()
 
-        started = input("                   ENTER NUMBER ONE TO START            =>: ")
+        started = input("                   ENTER A NUMBER TO START            =>: ")
 
         time.sleep(1)
         return started
@@ -75,6 +75,7 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
+            time.sleep(0.100)
             print()
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
@@ -117,7 +118,7 @@ class TournamentView:
         for char in info:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(0.100)
+            time.sleep(0.1)
         print()
         print()
         nbr_match = int(input("how many matchs do you want to do (even number)??:  "))
@@ -126,7 +127,7 @@ class TournamentView:
             print("............you must enter an even number...........")
         count = 0
         count2 = 0
-        for i in range(nbr_match):
+        for i in range(2):
 
             number_score1 = secrets.choice(score)
             number_score2 = secrets.choice(score)
@@ -147,8 +148,9 @@ class TournamentView:
                 print("THE WINNER IS", players[count + 1]['lastname'].upper())
                 competitor = players[count]['lastname']
                 scores[competitor] = number_score2
+            time.sleep(2)
 
-            print(scores)
+
 
 
 class LeaveView:
