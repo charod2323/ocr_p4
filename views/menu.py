@@ -86,7 +86,7 @@ class PlayerView:
                     print("Entrez un nombre inferieure à 100.")
 
             if rank < 100:
-                print(rank)
+                pass
 
             time.sleep(0.0001)
             print()
