@@ -5,7 +5,6 @@ import time
 
 class MenuView:
     def run(self):
-        import sys, time
         print("                                                                       CHESS TOURNAMENT              ")
         print()
 
@@ -26,22 +25,24 @@ class MenuView:
                   "         7          quit                   \n " \
                   "                                           \n" \
                   "                                           \n" \
-                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~\n"\
+                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~\n" \
                   "                                                                                                        \n" \
                   "                                                                                                        \n" \
                   "                                                    or enter the number 7 to quit                         "
+        """
         time.sleep(0.01)
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.01)
+        """
         print()
         print()
         print()
 
         started = input("                   ENTER A NUMBER TO START            =>: ")
 
-        time.sleep(1)
+        # time.sleep(1)
         return started
 
 
@@ -52,20 +53,22 @@ class PlayerView:
         identity_and_rank = {}
         scores = [1, 0, 0.5]
         i = 0
-        numberplayers = 4
-        nbr_match = numberplayers / 2
+        numberplayers = 8
+
         print()
 
         for i in range(numberplayers):
             player = "player"
             print()
             message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
+            """
             for char in message:
                 sys.stdout.write(char)
                 sys.stdout.flush()
                 time.sleep(0.100)
             print()
             print()
+            """
 
             lastname = input("lastname? : ")
             firstname = input("firstname? : ")
@@ -75,14 +78,14 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = input("rank /10? : ")
-            time.sleep(0.100)
+            # time.sleep(0.100)
             print()
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
             print("rank =>", rank)
             print()
-            time.sleep(1)
+            # time.sleep(1)
             key_player = "key_player"
             key_players = key_player + str(i + 1)
             value_player = "value_player"
@@ -97,6 +100,10 @@ class PlayerView:
             print()
 
             players.append(data_players)
+        count = 0
+        for i in players:
+           count = count + 1
+           print("player",count,i)
 
         return players
 
@@ -149,8 +156,6 @@ class TournamentView:
                 competitor = players[count]['lastname']
                 scores[competitor] = number_score2
             time.sleep(2)
-
-
 
 
 class LeaveView:
