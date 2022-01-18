@@ -4,6 +4,7 @@ import time
 
 
 class MenuView:
+
     def run(self):
         print("                                                                       CHESS TOURNAMENT              ")
         print()
@@ -29,20 +30,20 @@ class MenuView:
                   "                                                                                                        \n" \
                   "                                                                                                        \n" \
                   "                                                    or enter the number 7 to quit                         "
-        """
-        time.sleep(0.01)
+
+        time.sleep(0.0001)
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(0.01)
-        """
+            time.sleep(0.0001)
+
         print()
         print()
         print()
 
         started = input("                   ENTER A NUMBER TO START            =>: ")
 
-        # time.sleep(1)
+        time.sleep(0)
         return started
 
 
@@ -61,14 +62,13 @@ class PlayerView:
             player = "player"
             print()
             message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
-            """
+
             for char in message:
                 sys.stdout.write(char)
                 sys.stdout.flush()
-                time.sleep(0.100)
+                time.sleep(0.0001)
             print()
             print()
-            """
 
             lastname = input("lastname? : ")
             firstname = input("firstname? : ")
@@ -77,15 +77,22 @@ class PlayerView:
             birth_year = input("birth_year? : ")
             sex = input("sex m/f? : ")
             age = input("age? : ")
-            rank = input("rank /10? : ")
-            # time.sleep(0.100)
+            while True:
+                try:
+                    rank = int(input("rank /100? : ")) > 100
+
+                    break
+                except:
+                    print("Entrez un nombre inferieure à 100.")
+
+            time.sleep(0.0001)
             print()
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
             print("rank =>", rank)
             print()
-            # time.sleep(1)
+            time.sleep(0)
             key_player = "key_player"
             key_players = key_player + str(i + 1)
             value_player = "value_player"
@@ -102,60 +109,34 @@ class PlayerView:
             players.append(data_players)
         count = 0
         for i in players:
-           count = count + 1
-           print("player",count,i)
+            count = count + 1
+            print("player", count, i)
 
         return players
 
 
 class TournamentView:
-    def run(self, players):
-        tournament_name = []
-        tournament_place = []
-        tournament_date = []
-        tournament_nbr_rounds = []
-        tournament_description = []
-        match = {}
-        scores = {}
-        score = [0, 0.5, 1]
-        print()
-        print()
-        info = "------------------ THE TOURNAMENT BEGINS  --------------\n"
-        i = 0
-        for char in info:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.1)
-        print()
-        print()
-        nbr_match = int(input("how many matchs do you want to do (even number)??:  "))
-        while nbr_match % 2 != 0:
-            print()
-            print("............you must enter an even number...........")
-        count = 0
-        count2 = 0
-        for i in range(2):
 
+    def run(self, players):
+        match = ([], [])
+        score = [0, 0.5, 1]
+        round = []
+        print()
+        print()
+        print("------------------ THE TOURNAMENT BEGINS  --------------\n")
+        print()
+        print()
+        print("-------------------------ROUND 1--------------------------\n")
+        print()
+        print("listing of players according to their ranking:")
+        def ranking(e):
+            return e['rank']
+        players.sort(key=ranking)
+        print(players)
+        for i in range(2):
             number_score1 = secrets.choice(score)
             number_score2 = secrets.choice(score)
             print()
-            print("THE MATCH NUMBER {}".format(count2 + 1))
-            print()
-            print((players[i]['lastname'].upper()).center(50), number_score1)
-            print("VS".center(50))
-            print((players[i + 1]['lastname'].upper()).center(50), number_score2)
-            time.sleep(2)
-            if number_score1 == number_score2:
-                print("EGALITY")
-            elif number_score1 > number_score2:
-                print("THE WINNER IS", players[count]['lastname'].upper())
-                competitor = players[count]['lastname']
-                scores[competitor] = number_score1
-            else:
-                print("THE WINNER IS", players[count + 1]['lastname'].upper())
-                competitor = players[count]['lastname']
-                scores[competitor] = number_score2
-            time.sleep(2)
 
 
 class LeaveView:
