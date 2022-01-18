@@ -79,11 +79,14 @@ class PlayerView:
             age = input("age? : ")
             while True:
                 try:
-                    rank = int(input("rank /100? : ")) > 100
+                    rank = int(input("rank /100? : "))
 
                     break
-                except:
+                except ValueError:
                     print("Entrez un nombre inferieure à 100.")
+
+            if rank < 100:
+                print(rank)
 
             time.sleep(0.0001)
             print()
