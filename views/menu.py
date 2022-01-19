@@ -123,7 +123,7 @@ class TournamentView:
     def run(self, players):
         match = ([], [])
         score = [0, 0.5, 1]
-        identity_rank = []
+
         print()
         print()
         print("------------------ THE TOURNAMENT BEGINS  --------------\n")
@@ -133,30 +133,28 @@ class TournamentView:
         print()
         print()
         print("identity => rank")
-
         for i in range(8):
             print(players[i]["lastname"], "=>", players[i]["rank"])
 
         print()
         print()
-
+        print()
         print("listing of players according to their ranking:")
-        """
+        print()
+        print()
+        print()
+
         def ranking(e):
             return e['rank']
-        players.sort(key=ranking)
+
+        players.sort(reverse = True, key=ranking)
         count = 0
         for i in players:
             count = count + 1
             print("player", count, i)
-        #print(players)
-        for i in range(2):
-            number_score1 = secrets.choice(score)
-            number_score2 = secrets.choice(score)
-            print()
+
 
 
 class LeaveView:
     def run(self):
         sys.exit()
-         """
