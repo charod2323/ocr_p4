@@ -1,4 +1,4 @@
-import secrets
+# import secrets
 import sys
 import time
 
@@ -6,6 +6,8 @@ import time
 class MenuView:
 
     def run(self):
+        print()
+        print()
         print("                                                                       CHESS TOURNAMENT              ")
         print()
 
@@ -51,7 +53,6 @@ class PlayerView:
 
     def run(self):
         players = []
-        identity_and_rank = {}
         scores = [1, 0, 0.5]
         i = 0
         numberplayers = 8
@@ -87,7 +88,6 @@ class PlayerView:
 
             if rank < 100:
                 pass
-
             time.sleep(0.0001)
             print()
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
@@ -95,6 +95,7 @@ class PlayerView:
             print("lastname => ", lastname)
             print("rank =>", rank)
             print()
+
             time.sleep(0)
             key_player = "key_player"
             key_players = key_player + str(i + 1)
@@ -102,7 +103,6 @@ class PlayerView:
             value_players = value_player + str(i + 1)
             data_player = "data_player"
             data_players = data_player + str(i + 1)
-
             key_players = ['lastname', 'firstname', 'birth_date', 'birth_month', 'birth_year', 'sex', 'age', 'rank']
             value_players = [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank]
             data_players = dict(zip(key_players, value_players))
@@ -123,7 +123,7 @@ class TournamentView:
     def run(self, players):
         match = ([], [])
         score = [0, 0.5, 1]
-        round = []
+        identity_rank = []
         print()
         print()
         print("------------------ THE TOURNAMENT BEGINS  --------------\n")
@@ -131,11 +131,25 @@ class TournamentView:
         print()
         print("-------------------------ROUND 1--------------------------\n")
         print()
+        print()
+        print("identity => rank")
+
+        for i in range(8):
+            print(players[i]["lastname"], "=>", players[i]["rank"])
+
+        print()
+        print()
+
         print("listing of players according to their ranking:")
+        """
         def ranking(e):
             return e['rank']
         players.sort(key=ranking)
-        print(players)
+        count = 0
+        for i in players:
+            count = count + 1
+            print("player", count, i)
+        #print(players)
         for i in range(2):
             number_score1 = secrets.choice(score)
             number_score2 = secrets.choice(score)
@@ -145,3 +159,4 @@ class TournamentView:
 class LeaveView:
     def run(self):
         sys.exit()
+         """
