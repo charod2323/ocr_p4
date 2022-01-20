@@ -128,8 +128,8 @@ class PlayerView:
 class TournamentView:
 
     def run(self, players):
-        score = [0,1]
-        player_score =[]
+        score = [0, 1]
+        player_score = []
 
         print()
         print()
@@ -182,37 +182,47 @@ class TournamentView:
         for i in range(4):
             print()
             print()
-            print("      MATCH  ",i+1,"                        SCORE  ",i+1,"                           \n")
+            print("      MATCH  ", i + 1, "                        SCORE  ", i + 1, "                           \n")
             print()
             print()
-
 
             nbr_score1 = secrets.choice(score)
             nbr_score2 = secrets.choice(score)
-            print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"],"                             ",nbr_score1,"  ",nbr_score2)
-            if nbr_score1>nbr_score2:
-                print(players[i]["lastname"],"WON")
+            print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
+                  nbr_score1, "  ", nbr_score2)
+            player_score.append((players[i]["lastname"], nbr_score1))
+            player_score.append((players[i+4]["lastname"], nbr_score2))
+
+            if nbr_score1 > nbr_score2:
+                print(players[i]["lastname"], "WON")
                 print()
                 print()
-            if nbr_score1<nbr_score2:
-                print(players[i]["lastname"],"LOST")
+            if nbr_score1 < nbr_score2:
+                print(players[i]["lastname"], "LOST")
                 print()
                 print()
             if nbr_score1 == nbr_score2:
                 print("EGALITY")
                 print("each player receives 0.5 points")
+            if i == 8:
                 print()
                 print()
+                print()
+                print()
+                print()
+                print("----------------------------------------ROUND 2----------------------------------------\n")
+                print()
+                print()
+                print()
         print()
         print()
-        print()
-        print("----------------------------------------ROUND 2----------------------------------------\n")
-        print()
+        print("listing of players according to their total number of points")
         print()
         print()
-
-
-
+        count = 0
+        for i in player_score:
+            count = count + 1
+            print(i)
 
 class LeaveView:
     def run(self):
