@@ -178,7 +178,7 @@ class TournamentView:
 
         print()
         print()
-        for i in range(8):
+        for i in range(4):
             print()
             print()
             print("      MATCH  ",i+1,"                                                     SCORE  ",i+1,"                           \n")
@@ -202,6 +202,13 @@ class TournamentView:
                     print("each player receives 0.5 points")
                     print()
                     print()
+        print()
+        print()
+        print()
+        print("----------------------------------------ROUND 2----------------------------------------\n")
+        print()
+        print()
+        print()
 
 
 
