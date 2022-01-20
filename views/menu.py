@@ -175,7 +175,11 @@ class TournamentView:
             if count == 4:
                 print()
                 print("the last 4 in the standings are\n")
-                print()
+
+        print()
+        print()
+        for i in range(8):
+            print("                             MATCH  ",i,"                                           \n")
 
 
 class LeaveView:
