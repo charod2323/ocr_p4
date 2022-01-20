@@ -181,21 +181,28 @@ class TournamentView:
         for i in range(8):
             print()
             print()
-            print("      MATCH  ",i+1,"                   SCORE  ",i+1,"                           \n")
+            print("      MATCH  ",i+1,"                                                     SCORE  ",i+1,"                           \n")
             print()
             print()
 
             for i in range(4):
                 nbr_score1 = secrets.choice(score)
                 nbr_score2 = secrets.choice(score)
-                print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"],".......",nbr_score1,"..",nbr_score2)
+                print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"],"                             ",nbr_score1,"  ",nbr_score2)
                 if nbr_score1>nbr_score2:
                     print(players[i]["lastname"],"WON")
+                    print()
+                    print()
                 if nbr_score1<nbr_score2:
                     print(players[i]["lastname"],"LOST")
+                    print()
+                    print()
                 if nbr_score1 == nbr_score2:
-                    print(players[i]["lastname"], "EGALITY")
+                    print("EGALITY")
                     print("each player receives 0.5 points")
+                    print()
+                    print()
+
 
 
 
