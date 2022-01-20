@@ -79,15 +79,17 @@ class PlayerView:
             sex = input("sex m/f? : ")
             age = input("age? : ")
             rank = 0
-            rank = int(input("rank/100?  :"))
+
             while True:
                 try:
-                    rank = rank < 100
+                    rank = int(input("rank ?:  "))
 
                     break
                 except ValueError:
                     print("Enter a number less than 100.")
 
+            if rank>100:
+                rank = int(input("enter a number less than 100  :"))
             if rank == False:
                 rank = int(input("enter a number less than 100  :"))
             if rank == True:
@@ -148,14 +150,13 @@ class TournamentView:
         print()
         print()
 
-        def ranking(e):
-            return e['rank']
-
-        players.sort(reverse=True, key=ranking)
+        team = sorted(players.items(), key=lambda x: x[1], reverse=True)
         count = 0
-        for i in players:
+        for i in team:
             count = count + 1
             print("player", count, i)
+
+
         print()
         print()
         print()
