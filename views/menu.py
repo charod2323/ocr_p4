@@ -88,7 +88,7 @@ class PlayerView:
                 except ValueError:
                     print("Enter a number less than 100.")
 
-            if rank>100:
+            if rank > 100:
                 rank = int(input("enter a number less than 100  :"))
             if rank == False:
                 rank = int(input("enter a number less than 100  :"))
@@ -150,12 +150,15 @@ class TournamentView:
         print()
         print()
 
-        team = sorted(players.items(), key=lambda x: x[1], reverse=True)
+        def ranking(e):
+            return e['rank']
+
+        players.sort(reverse=True, key=ranking)
         count = 0
-        for i in team:
+        for i in players:
             count = count + 1
             print("player", count, i)
-
+        count = 0
 
         print()
         print()
@@ -170,6 +173,8 @@ class TournamentView:
             count = count + 1
             print("player", count, i)
             if count == 4:
+                print()
+                print("the last 4 in the standings are\n")
                 print()
 
 
