@@ -188,8 +188,16 @@ class TournamentView:
 
             nbr_score1 = secrets.choice(score)
             nbr_score2 = secrets.choice(score)
+
+            if nbr_score1 == nbr_score2:
+                print("EGALITY")
+                print("each player receives 0.5 points")
+                nbr_score1 = 0.5
+                nbr_score2 = 0.5
+
             print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
                   nbr_score1, "  ", nbr_score2)
+
             player_score.append((players[i]["lastname"], nbr_score1))
             player_score.append((players[i+4]["lastname"], nbr_score2))
 
@@ -201,9 +209,6 @@ class TournamentView:
                 print(players[i]["lastname"], "LOST")
                 print()
                 print()
-            if nbr_score1 == nbr_score2:
-                print("EGALITY")
-                print("each player receives 0.5 points")
             if i == 8:
                 print()
                 print()
