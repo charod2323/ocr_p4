@@ -78,16 +78,19 @@ class PlayerView:
             birth_year = input("birth_year? : ")
             sex = input("sex m/f? : ")
             age = input("age? : ")
+            rank = 0
+            rank = int(input("rank/100?  :"))
             while True:
                 try:
-                    rank = int(input("rank /100? : "))
+                    rank = rank < 100
 
                     break
                 except ValueError:
                     print("Entrez un nombre inferieure à 100.")
 
-            if rank < 100:
-                pass
+            if rank == False:
+                rank = int(input("entrez un nbr<100  :"))
+
             time.sleep(0.0001)
             print()
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
@@ -121,15 +124,14 @@ class PlayerView:
 class TournamentView:
 
     def run(self, players):
-        match = ([], [])
         score = [0, 0.5, 1]
 
         print()
         print()
-        print("------------------ THE TOURNAMENT BEGINS  --------------\n")
+        print("------------------------------ THE TOURNAMENT BEGINS  -------------------------------------\n")
         print()
         print()
-        print("-------------------------ROUND 1--------------------------\n")
+        print()
         print()
         print()
         print("identity => rank")
@@ -139,7 +141,7 @@ class TournamentView:
         print()
         print()
         print()
-        print("listing of players according to their ranking:")
+        print("-----------------LISTING OF PLAYERS ACCORDING TO THEIR RANKING-----------------------------------\n")
         print()
         print()
         print()
@@ -147,12 +149,18 @@ class TournamentView:
         def ranking(e):
             return e['rank']
 
-        players.sort(reverse = True, key=ranking)
+        players.sort(reverse=True, key=ranking)
         count = 0
         for i in players:
             count = count + 1
             print("player", count, i)
-
+        print()
+        print()
+        print()
+        print("----------------------------------------ROUND 1----------------------------------------\n")
+        print()
+        print()
+        print()
 
 
 class LeaveView:
