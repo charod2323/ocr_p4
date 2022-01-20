@@ -180,6 +180,10 @@ class TournamentView:
         print()
         for i in range(8):
             print("                             MATCH  ",i+1,"                                           \n")
+            print()
+            print()
+            for i in range(4):
+                print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"])
 
 
 class LeaveView:
