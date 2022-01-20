@@ -1,4 +1,4 @@
-# import secrets
+import secrets
 import sys
 import time
 
@@ -128,7 +128,7 @@ class PlayerView:
 class TournamentView:
 
     def run(self, players):
-        score = [0, 0.5, 1]
+        score = [0,1]
 
         print()
         print()
@@ -179,11 +179,24 @@ class TournamentView:
         print()
         print()
         for i in range(8):
-            print("                             MATCH  ",i+1,"                                           \n")
             print()
             print()
+            print("      MATCH  ",i+1,"                   SCORE  ",i+1,"                           \n")
+            print()
+            print()
+
             for i in range(4):
-                print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"])
+                nbr_score1 = secrets.choice(score)
+                nbr_score2 = secrets.choice(score)
+                print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"],".......",nbr_score1,"..",nbr_score2)
+                if nbr_score1>nbr_score2:
+                    print(players[i]["lastname"],"WON")
+                if nbr_score1<nbr_score2:
+                    print(players[i]["lastname"],"LOST")
+                if nbr_score1 == nbr_score2:
+                    print(players[i]["lastname"], "EGALITY")
+                    print("each player receives 0.5 points")
+
 
 
 class LeaveView:
