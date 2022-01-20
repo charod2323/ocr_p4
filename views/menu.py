@@ -86,10 +86,12 @@ class PlayerView:
 
                     break
                 except ValueError:
-                    print("Entrez un nombre inferieure à 100.")
+                    print("Enter a number less than 100.")
 
             if rank == False:
-                rank = int(input("entrez un nbr<100  :"))
+                rank = int(input("enter a number less than 100  :"))
+            if rank == True:
+                rank = int(input("for validation retype his classification please  :"))
 
             time.sleep(0.0001)
             print()
@@ -161,6 +163,13 @@ class TournamentView:
         print()
         print()
         print()
+        print("the first 4 in the standings are:\n")
+        count = 0
+        for i in players:
+            count = count + 1
+            print("player", count, i)
+            if count == 4:
+                print()
 
 
 class LeaveView:
