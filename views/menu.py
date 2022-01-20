@@ -179,7 +179,7 @@ class TournamentView:
         print()
         print()
         for i in range(8):
-            print("                             MATCH  ",i,"                                           \n")
+            print("                             MATCH  ",i+1,"                                           \n")
 
 
 class LeaveView:
