@@ -141,7 +141,7 @@ class TournamentView:
         print()
         print("identity => rank")
         for i in range(8):
-            print(players[i]["lastname"], "=>", players[i]["rank"])
+            print(players[i]["lastname"], "=>       ", players[i]["rank"])
 
         print()
         print()
@@ -199,7 +199,7 @@ class TournamentView:
                   nbr_score1, "  ", nbr_score2)
 
             player_score.append((players[i]["lastname"], nbr_score1))
-            player_score.append((players[i+4]["lastname"], nbr_score2))
+            player_score.append((players[i + 4]["lastname"], nbr_score2))
 
             if nbr_score1 > nbr_score2:
                 print(players[i]["lastname"], "WON")
@@ -209,16 +209,17 @@ class TournamentView:
                 print(players[i]["lastname"], "LOST")
                 print()
                 print()
-            if i == 8:
-                print()
-                print()
-                print()
-                print()
-                print()
-                print("----------------------------------------ROUND 2----------------------------------------\n")
-                print()
-                print()
-                print()
+
+        print()
+        print()
+        print()
+        print("listing of matches")
+        print()
+        print()
+        m = [[0] * 4 for i in range(4)]
+        print(m)
+
+        print()
         print()
         print()
         print("list of players by point")
@@ -234,7 +235,10 @@ class TournamentView:
         print()
         print()
         for y in range(8):
-            print("player", y+1,"    ","identity:", players[y]['lastname'],"       ","rawking:", players[y]['rank'])
+            print("player", y + 1, "    ", "identity:", players[y]['lastname'], "       ", "rawking:",
+                  players[y]['rank'])
+        print()
+        print()
 
 
 class LeaveView:
