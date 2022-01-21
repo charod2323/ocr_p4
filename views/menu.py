@@ -221,7 +221,7 @@ class TournamentView:
                 print()
         print()
         print()
-        print("listing of players according to their total number of points")
+        print("list of players by point")
         print()
         print()
         count = 0
@@ -230,8 +230,13 @@ class TournamentView:
             print(i)
         print()
         print()
-        print("some players have the same number of points")
-        print("new listing according to their ranking")
+        print("listing of players by ranking")
+        print()
+        print()
+        for y in range(8):
+            print("player", y+1,"    ","identity:", players[y]['lastname'],"       ","rawking:", players[y]['rank'])
+
+
 class LeaveView:
     def run(self):
         sys.exit()
