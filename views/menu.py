@@ -72,12 +72,14 @@ class PlayerView:
             print()
 
             lastname = input("lastname? : ")
+
             firstname = input("firstname? : ")
             birth_date = input("birth_date? : ")
             birth_month = input("birth_month? : ")
             birth_year = input("birth_year? : ")
             sex = input("sex m/f? : ")
             age = input("age? : ")
+
             rank = 0
 
             while True:
@@ -130,6 +132,7 @@ class TournamentView:
     def run(self, players):
         score = [0, 1]
         player_score = []
+
 
         print()
         print()
@@ -212,11 +215,13 @@ class TournamentView:
 
         print()
         print()
-        print()
         print("listing of matches")
         print()
         print()
         m = [[0] * 4 for i in range(4)]
+        count = 0
+        m[count][count] = player_score[0][0]
+        m[count][count+1] = player_score[0][1]
         print(m)
 
         print()
