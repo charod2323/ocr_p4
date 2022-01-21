@@ -133,7 +133,6 @@ class TournamentView:
         score = [0, 1]
         player_score = []
 
-
         print()
         print()
         print("------------------------------ THE TOURNAMENT BEGINS  -------------------------------------\n")
@@ -213,15 +212,18 @@ class TournamentView:
                 print()
                 print()
 
+
         print()
         print()
         print("listing of matches")
         print()
-        print()
+        print("     MATCH1     ")
         m = [[0] * 4 for i in range(4)]
         count = 0
         m[count][count] = player_score[0][0]
-        m[count][count+1] = player_score[0][1]
+        m[count][count + 1] = player_score[0][1]
+        m[count][count + 2] =  player_score[1][0]
+        m[count][count + 3] = player_score[1][1]
         print(m)
 
         print()
