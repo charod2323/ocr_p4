@@ -212,12 +212,11 @@ class TournamentView:
                 print()
                 print()
 
-
         print()
         print()
         print("listing of matches")
         print()
-        print("     MATCH1          MATCH2          MATCH3          MATCH4          ")
+        print("     MATCH1                 MATCH2                  MATCH3                 MATCH4          ")
 
         m = [[0] * 4 for i in range(4)]
         count = 0
