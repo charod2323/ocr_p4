@@ -176,7 +176,7 @@ class TournamentView:
         print()
         print()
         print()
-        # coupe la liste plyers en deux parties
+        # coupe la liste players en deux parties
         print("the first 4 in the standings are:\n")
         count = 0
         for i in players:
@@ -195,6 +195,7 @@ class TournamentView:
             print()
             print()
 
+            # choisir en mode aléatoire le score
             nbr_score1 = secrets.choice(score)
             nbr_score2 = secrets.choice(score)
 
@@ -204,9 +205,10 @@ class TournamentView:
                 nbr_score1 = 0.5
                 nbr_score2 = 0.5
 
+            # afficher la variable "lastname" des deux joueurs opposés
             print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
                   nbr_score1, "  ", nbr_score2)
-
+            # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
             player_score.append((players[i]["lastname"], nbr_score1))
             player_score.append((players[i + 4]["lastname"], nbr_score2))
 
@@ -224,8 +226,9 @@ class TournamentView:
         print("listing of matches")
         print()
         print("     MATCH1                 MATCH2                  MATCH3                 MATCH4          ")
-
+        # extraction des éléments dans la liste player_sore pour enregistrer les matchs sous formes de listes
         m = [[0] * 4 for i in range(4)]
+        #[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
         count = 0
         m[count][count] = player_score[0][0]
         m[count][count + 1] = player_score[0][1]
@@ -254,6 +257,7 @@ class TournamentView:
         print("list of players by point")
         print()
         print()
+        # afficher ligne par ligne le contenu de player_score
         count = 0
         for i in player_score:
             count = count + 1
@@ -264,6 +268,7 @@ class TournamentView:
         print("listing of players by ranking")
         print()
         print()
+        # afficher ligne par ligne le contenu de players('lastname',et'rank')
         for y in range(8):
             print("player", y + 1, "    ", "identity:", players[y]['lastname'], "       ", "rawking:",
                   players[y]['rank'])
