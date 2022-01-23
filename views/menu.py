@@ -70,9 +70,8 @@ class PlayerView:
                 time.sleep(0.0001)
             print()
             print()
-
+            # création du joueurs par l'utilisateur
             lastname = input("lastname? : ")
-
             firstname = input("firstname? : ")
             birth_date = input("birth_date? : ")
             birth_month = input("birth_month? : ")
@@ -81,7 +80,7 @@ class PlayerView:
             age = input("age? : ")
 
             rank = 0
-
+            # obliger l'utilisateur à entrer un nombre < 100
             while True:
                 try:
                     rank = int(input("rank ?:  "))
@@ -99,6 +98,7 @@ class PlayerView:
 
             time.sleep(0.0001)
             print()
+            # afficher l'identiter et le classement du joueurs
             print("PLAYER{} ".format(i + 1) + " <identity and rank>")
             print()
             print("lastname => ", lastname)
@@ -106,6 +106,8 @@ class PlayerView:
             print()
 
             time.sleep(0)
+            # création des dictionnaires "identités complètes avec classement"
+            # numéroter les clées,les valeurs,les données avec str(i+1)
             key_player = "key_player"
             key_players = key_player + str(i + 1)
             value_player = "value_player"
@@ -117,11 +119,12 @@ class PlayerView:
             data_players = dict(zip(key_players, value_players))
 
             print()
-
+            # enregistrer les dictionnaires dans une liste "players"
             players.append(data_players)
         count = 0
         for i in players:
             count = count + 1
+            # afficher le contenu de la liste players
             print("player", count, i)
 
         return players
@@ -141,6 +144,7 @@ class TournamentView:
         print()
         print()
         print()
+        # afficher les éléments lastname et rank de la liste players
         print("identity => rank")
         for i in range(8):
             print(players[i]["lastname"], "=>       ", players[i]["rank"])
@@ -152,12 +156,14 @@ class TournamentView:
         print()
         print()
         print()
-
+        # fonction qui trie chaques dictionnaires(dans la liste players)
+        # en mode décroissant par rapport à leur classement
         def ranking(e):
             return e['rank']
 
         players.sort(reverse=True, key=ranking)
         count = 0
+        # afficher le contenu players ligne par ligne
         for i in players:
             count = count + 1
             print("player", count, i)
@@ -170,6 +176,7 @@ class TournamentView:
         print()
         print()
         print()
+        # coupe la liste plyers en deux parties
         print("the first 4 in the standings are:\n")
         count = 0
         for i in players:
@@ -251,6 +258,7 @@ class TournamentView:
         for i in player_score:
             count = count + 1
             print(i)
+
         print()
         print()
         print("listing of players by ranking")
