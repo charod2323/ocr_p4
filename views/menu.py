@@ -284,6 +284,7 @@ class TournamentView:
         player_score2 = []
         array_player1 = []
         array_player2 = []
+        scores = [1, 0, 0.5]
         for i in range(1, 5):
             array_player2.append(players[(i * 2) - 1]["lastname"])
         for i in range(4):
@@ -296,24 +297,22 @@ class TournamentView:
             print()
 
             # choisir en mode aléatoire le score
-            nbr_score3 = secrets.choice(score)
-            nbr_score4 = secrets.choice(score)
-            nbr_score5 = secrets.choice(score)
-            nbr_score6 = secrets.choice(score)
+            nbr_score5 = secrets.choice(scores)
+            nbr_score6 = secrets.choice(scores)
 
-            if nbr_score3 == nbr_score4:
+            if nbr_score5 == nbr_score6:
                 print("EGALITY")
                 print("each player receives 0.5 points")
-                nbr_score3 = 0.5
-                nbr_score4 = 0.5
+                nbr_score5 = 0.5
+                nbr_score6 = 0.5
                 # afficher la variable "lastname" des deux joueurs opposés
                 print(array_player1[i], "  VS  ", array_player2[i], "                             ",
-                      nbr_score3, "  ", nbr_score4)
+                      nbr_score5, "  ", nbr_score6)
                 # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
-                player_score.append((array_player1[i], nbr_score3))
-                player_score.append((array_player2[i], nbr_score4))
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
             if nbr_score5 > nbr_score6:
-                print(array_player1[i],"VS",array_player2[i],"                                 ",
+                print(array_player1[i], "VS", array_player2[i], "                                 ",
                       nbr_score5, "  ", nbr_score6)
                 print(array_player1[i], "WON")
                 print()
