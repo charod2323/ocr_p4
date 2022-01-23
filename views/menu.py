@@ -156,6 +156,7 @@ class TournamentView:
         print()
         print()
         print()
+
         # fonction qui trie chaques dictionnaires(dans la liste players)
         # en mode décroissant par rapport à leur classement
         def ranking(e):
@@ -167,12 +168,12 @@ class TournamentView:
         for i in players:
             count = count + 1
             print("player", count, i)
-        count = 0
 
         print()
         print()
         print()
-        print("----------------------------------------ROUND 1----------------------------------------\n")
+        print()
+        print("+++++++++++++++++++++++++++++++++++++++   ROUND1   +++++++++++++++++++++++++++++++++++++++++++++\n")
         print()
         print()
         print()
@@ -191,7 +192,7 @@ class TournamentView:
         for i in range(4):
             print()
             print()
-            print("      MATCH  ", i + 1, "                        SCORE  ", i + 1, "                           \n")
+            print("      MATCH  ", i + 1, "                         SCORE  ", i + 1, "                           \n")
             print()
             print()
 
@@ -228,8 +229,9 @@ class TournamentView:
         print("     MATCH1                 MATCH2                  MATCH3                 MATCH4          ")
         # extraction des éléments dans la liste player_sore pour enregistrer les matchs sous formes de listes
         m = [[0] * 4 for i in range(4)]
-        #[[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        # [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
         count = 0
+        # player_score contient le nom des joueurs et son score
         m[count][count] = player_score[0][0]
         m[count][count + 1] = player_score[0][1]
         m[count][count + 2] = player_score[1][0]
@@ -254,7 +256,7 @@ class TournamentView:
         print()
         print()
         print()
-        print("list of players by point")
+        print("list of players with total points")
         print()
         print()
         # afficher ligne par ligne le contenu de player_score
@@ -274,6 +276,65 @@ class TournamentView:
                   players[y]['rank'])
         print()
         print()
+        print("++++++++++++++++++++++++++++++++++++++   ROUND2   +++++++++++++++++++++++++++++++++++++++++++++++++++")
+        print()
+        print()
+        print()
+        print()
+        player_score2 = []
+        array_player1 = []
+        array_player2 = []
+        for i in range(1, 5):
+            array_player2.append(players[(i * 2) - 1]["lastname"])
+        for i in range(4):
+            array_player1.append(players[i * 2]["lastname"])
+        for i in range(4):
+            print()
+            print()
+            print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
+            print()
+            print()
+
+            # choisir en mode aléatoire le score
+            nbr_score3 = secrets.choice(score)
+            nbr_score4 = secrets.choice(score)
+            nbr_score5 = secrets.choice(score)
+            nbr_score6 = secrets.choice(score)
+
+            if nbr_score3 == nbr_score4:
+                print("EGALITY")
+                print("each player receives 0.5 points")
+                nbr_score3 = 0.5
+                nbr_score4 = 0.5
+                # afficher la variable "lastname" des deux joueurs opposés
+                print(array_player1[i], "  VS  ", array_player2[i], "                             ",
+                      nbr_score3, "  ", nbr_score4)
+                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+                player_score.append((array_player1[i], nbr_score3))
+                player_score.append((array_player2[i], nbr_score4))
+            if nbr_score5 > nbr_score6:
+                print(array_player1[i],"VS",array_player2[i],"                                 ",
+                      nbr_score5, "  ", nbr_score6)
+                print(array_player1[i], "WON")
+                print()
+                print()
+            if nbr_score5 < nbr_score6:
+                print(array_player1[i], "VS", array_player2[i], "                                 ",
+                      nbr_score5, "  ", nbr_score6)
+                print(array_player1[i], "LOST")
+                print()
+                print()
+
+        print()
+        print()
+        print()
+        print("list of players with total points")
+        print()
+        print()
+        count = 0
+        for i in player_score:
+            count = count + 1
+            print(i)
 
 
 class LeaveView:
