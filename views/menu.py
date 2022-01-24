@@ -340,6 +340,7 @@ class TournamentView:
         lst = iter(matches)
         match_player_score = [list(islice(lst, elem))
                               for elem in length_to_split]
+        print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
         print(match_player_score)
 
         print()
@@ -349,9 +350,25 @@ class TournamentView:
         print()
         print()
         count = 0
-        for i in player_score:
+        for i in player_score2:
             count = count + 1
             print(i)
+        print()
+        print()
+        print()
+
+        print("players         score1                      score2          total scores")
+        print()
+        for i in range(0, 8):
+            for j in range(0, 1):
+                total_scores = player_score[i][1] + player_score2[i][1]
+                print(player_score[i][0], "               ", player_score[i][1], "       ", "     +           ", player_score2[i][1],
+                      "              =", total_scores)
+                print()
+
+        print()
+
+
 
 
 class LeaveView:
