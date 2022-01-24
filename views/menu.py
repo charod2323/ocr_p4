@@ -1,3 +1,4 @@
+from itertools import islice
 import secrets
 import sys
 import time
@@ -323,7 +324,21 @@ class TournamentView:
                 print(array_player1[i], "LOST")
                 print()
                 print()
+        print()
+        print()
+        print("listing of matches")
 
+        match = player_score
+        matches = list(x for t in match for x in t)
+        #print(matches)
+
+        length_to_split = [len(matches) // 4] * 4
+        lst = iter(matches)
+        match_player_score = [list(islice(lst, elem))
+                  for elem in length_to_split]
+
+
+        print(match_player_score)
         print()
         print()
         print()
