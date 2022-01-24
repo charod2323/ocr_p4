@@ -1,7 +1,7 @@
-from itertools import islice
 import secrets
 import sys
 import time
+from itertools import islice
 
 
 class MenuView:
@@ -316,29 +316,32 @@ class TournamentView:
                 print(array_player1[i], "VS", array_player2[i], "                                 ",
                       nbr_score5, "  ", nbr_score6)
                 print(array_player1[i], "WON")
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
                 print()
                 print()
             if nbr_score5 < nbr_score6:
                 print(array_player1[i], "VS", array_player2[i], "                                 ",
                       nbr_score5, "  ", nbr_score6)
                 print(array_player1[i], "LOST")
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
                 print()
                 print()
         print()
         print()
         print("listing of matches")
 
-        match = player_score
+        match = player_score2
+
         matches = list(x for t in match for x in t)
-        #print(matches)
 
         length_to_split = [len(matches) // 4] * 4
         lst = iter(matches)
         match_player_score = [list(islice(lst, elem))
-                  for elem in length_to_split]
-
-
+                              for elem in length_to_split]
         print(match_player_score)
+
         print()
         print()
         print()
