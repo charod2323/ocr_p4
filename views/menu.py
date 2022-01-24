@@ -277,7 +277,14 @@ class TournamentView:
                   players[y]['rank'])
         print()
         print()
-        print("+++++++++++++++++++++++++++++++++   ROUND1 FINISHED   ++++++++++++++++++++++++++++++++++++++++++")
+        print("________mises à jours classement________")
+        print()
+        print()
+        for y in range(8):
+            if players[y]['lastname'] == player_score[y][0]:
+                print("identity player : ",players[y]['lastname']," new rawking : ",players[y]['rank']+player_score[y][1])
+
+
         print()
         print("++++++++++++++++++++++++++++++++++++++   ROUND2   +++++++++++++++++++++++++++++++++++++++++++++++++++")
         print()
@@ -364,21 +371,115 @@ class TournamentView:
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "       ", "+","                ", player_score2[i][1],
-                      "              ","=", total_scores)
+                print(player_score[i][0], "               ", player_score[i][1],"            ",
+                      "+", player_score2[i][1],"      ","=","        ", total_scores)
                 print()
 
         print()
         print()
-        print("++++++++++++++++++++++++++++++++++   ROUND2 FINISHED   +++++++++++++++++++++++++++++++++++++++++++++++")
-        print()
-        print()
-        print()
-        print()
-        print()
-        print("========================================   TOURNAMENT FINISHED   =====================================")
+        print("________mises à jours classement________")
 
 
+
+
+        print("++++++++++++++++++++++++++++++++++   ROUND3   +++++++++++++++++++++++++++++++++++++++++++++++")
+        print()
+        print()
+        print()
+        print()
+        print()
+        print()
+        print()
+        print()
+        print()
+        player_score2 = []
+        array_player1 = []
+        array_player2 = []
+        scores = [1, 0, 0.5]
+        for i in range(1, 5):
+            array_player2.append(players[(i * 2) - 1]["lastname"])
+        for i in range(4):
+            array_player1.append(players[i * 2]["lastname"])
+        for i in range(4):
+            print()
+            print()
+            print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
+            print()
+            print()
+
+            # choisir en mode aléatoire le score
+            nbr_score5 = secrets.choice(scores)
+            nbr_score6 = secrets.choice(scores)
+
+            if nbr_score5 == nbr_score6:
+                print("EGALITY")
+                print("each player receives 0.5 points")
+                nbr_score5 = 0.5
+                nbr_score6 = 0.5
+                # afficher la variable "lastname" des deux joueurs opposés
+                print(array_player1[i], "  VS  ", array_player2[i], "                             ",
+                      nbr_score5, "  ", nbr_score6)
+                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
+            if nbr_score5 > nbr_score6:
+                print(array_player1[i], "VS", array_player2[i], "                                 ",
+                      nbr_score5, "  ", nbr_score6)
+                print(array_player1[i], "WON")
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
+                print()
+                print()
+            if nbr_score5 < nbr_score6:
+                print(array_player1[i], "VS", array_player2[i], "                                 ",
+                      nbr_score5, "  ", nbr_score6)
+                print(array_player1[i], "LOST")
+                player_score2.append((array_player1[i], nbr_score5))
+                player_score2.append((array_player2[i], nbr_score6))
+                print()
+                print()
+        print()
+        print()
+        print("listing of matches")
+
+        match = player_score2
+
+        matches = list(x for t in match for x in t)
+
+        length_to_split = [len(matches) // 4] * 4
+        lst = iter(matches)
+        match_player_score = [list(islice(lst, elem))
+                              for elem in length_to_split]
+        print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
+        print(match_player_score)
+
+        print()
+        print()
+        print()
+        print("list of players with total points")
+        print()
+        print()
+        count = 0
+        for i in player_score2:
+            count = count + 1
+            print(i)
+        print()
+        print()
+        print()
+
+        print("players         score1                      score2          total scores")
+        print()
+        for i in range(0, 8):
+            for j in range(0, 1):
+                total_scores = player_score[i][1] + player_score2[i][1]
+                print(player_score[i][0], "               ", player_score[i][1], "       ", "+", "                ",
+                      player_score2[i][1],
+                      "              ", "=", total_scores)
+                print()
+
+        print()
+        print()
+        print("________mises à jours classement________")
 
 
 class LeaveView:
