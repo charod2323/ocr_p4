@@ -277,6 +277,8 @@ class TournamentView:
                   players[y]['rank'])
         print()
         print()
+        print("+++++++++++++++++++++++++++++++++   ROUND1 FINISHED   ++++++++++++++++++++++++++++++++++++++++++")
+        print()
         print("++++++++++++++++++++++++++++++++++++++   ROUND2   +++++++++++++++++++++++++++++++++++++++++++++++++++")
         print()
         print()
@@ -362,11 +364,19 @@ class TournamentView:
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "       ", "     +           ", player_score2[i][1],
-                      "              =", total_scores)
+                print(player_score[i][0], "               ", player_score[i][1], "       ", "+","                ", player_score2[i][1],
+                      "              ","=", total_scores)
                 print()
 
         print()
+        print()
+        print("++++++++++++++++++++++++++++++++++   ROUND2 FINISHED   +++++++++++++++++++++++++++++++++++++++++++++++")
+        print()
+        print()
+        print()
+        print()
+        print()
+        print("========================================   TOURNAMENT FINISHED   =====================================")
 
 
 
