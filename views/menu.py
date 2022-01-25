@@ -137,7 +137,7 @@ class TournamentView:
         print()
         print("-----------------LISTING OF PLAYERS ACCORDING TO THEIR RANKING-----------------------------------\n")
         print()
-        print()
+        print("                           in descending order                      ")
         print()
 
         # fonction qui trie chaques dictionnaires(dans la liste players)
@@ -257,10 +257,7 @@ class TournamentView:
         print("new ranking")
         print()
         print()
-        # afficher ligne par ligne le contenu de players('lastname',et'rank')
-        for y in range(8):
-            print("player", y + 1, "    ", "identity:", players[y]['lastname'], "       ", "rawking:",
-                  players[y]['rank'])
+        print(update_rawk)
         print()
         print()
         print()
@@ -275,6 +272,7 @@ class TournamentView:
         player_score2 = []
         array_player1 = []
         array_player2 = []
+        update_rawk2 = []
         scores = [1, 0, 0.5]
         # on enregistre la position des premiers joueurs
         for i in range(1, 5):
@@ -282,6 +280,10 @@ class TournamentView:
         # on enregistre la position des adversaires
         for i in range(4):
             array_player1.append(players[i * 2]["lastname"])
+        print()
+        print()
+
+
         # demarrage des matchs
         for i in range(4):
             print()
@@ -300,6 +302,7 @@ class TournamentView:
                 # afficher la variable "lastname" des deux joueurs opposés
                 print(array_player1[i], "  VS  ", array_player2[i], "                             ",
                       nbr_score5, "  ", nbr_score6)
+
                 # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
                 player_score2.append((array_player1[i], nbr_score5))
                 player_score2.append((array_player2[i], nbr_score6))
@@ -355,8 +358,15 @@ class TournamentView:
 
         print()
         print()
+        print("________________new classement____________________")
         print()
-        print("________mises à jours classement________")
+        for i in range(8):
+            print(players[i]["lastname"],"=>",players[i]["rank"]+player_score[i][1]+player_score2[i][1])
+        print()
+        print()
+        print()
+
+
 
         print("++++++++++++++++++++++++++++++++++   ROUND3   +++++++++++++++++++++++++++++++++++++++++++++++")
         print()
@@ -369,96 +379,3 @@ class TournamentView:
         print()
         print()
         print()
-        player_score3 = []
-        array_players1 = []
-        array_players2 = []
-        scores = [1, 0, 0.5]
-        for i in range(1, 5):
-            array_players2.append(players[(i * 2) - 1]["lastname"])
-        for i in range(4):
-            array_players1.append(players[i * 2]["lastname"])
-        for i in range(4):
-            print()
-            print()
-            print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
-            print()
-            print()
-
-            # choisir en mode aléatoire le score
-            nbr_score5 = secrets.choice(scores)
-            nbr_score6 = secrets.choice(scores)
-
-            if nbr_score5 == nbr_score6:
-                print("EGALITY")
-                print("each player receives 0.5 points")
-                nbr_score5 = 0.5
-                nbr_score6 = 0.5
-                # afficher la variable "lastname" des deux joueurs opposés
-                print(array_players1[i], "  VS  ", array_players2[i], "                             ",
-                      nbr_score5, "  ", nbr_score6)
-                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
-                player_score3.append((array_players1[i], nbr_score5))
-                player_score3.append((array_players2[i], nbr_score6))
-            if nbr_score5 > nbr_score6:
-                print(array_players1[i], "VS", array_players2[i], "                                 ",
-                      nbr_score5, "  ", nbr_score6)
-                print(array_player1[i], "WON")
-                player_score3.append((array_players1[i], nbr_score5))
-                player_score3.append((array_players2[i], nbr_score6))
-                print()
-                print()
-            if nbr_score5 < nbr_score6:
-                print(array_players1[i], "VS", array_players2[i], "                                 ",
-                      nbr_score5, "  ", nbr_score6)
-                print(array_players1[i], "LOST")
-                player_score3.append((array_players1[i], nbr_score5))
-                player_score3.append((array_players2[i], nbr_score6))
-                print()
-                print()
-        print()
-        print()
-        print("listing of matches")
-
-        match = player_score3
-
-        matches = list(x for t in match for x in t)
-
-        length_to_split = [len(matches) // 4] * 4
-        lst = iter(matches)
-        match_player_score = [list(islice(lst, elem))
-                              for elem in length_to_split]
-        print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
-        print(match_player_score)
-
-        print()
-        print()
-        print()
-        print("list of players with total points")
-        print()
-        print()
-        count = 0
-        for i in player_score3:
-            count = count + 1
-            print(i)
-        print()
-        print()
-        print()
-
-        print("players         score1                      score2          total scores")
-        print()
-        for i in range(0, 8):
-            for j in range(0, 1):
-                total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "       ", "+", "                ",
-                      player_score2[i][1],
-                      "              ", "=", total_scores)
-                print()
-
-        print()
-        print()
-        print("________mises à jours classement________")
-
-
-class LeaveView:
-    def run(self):
-        sys.exit()
