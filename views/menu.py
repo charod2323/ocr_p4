@@ -83,7 +83,7 @@ class PlayerView:
             if rank == False:
                 rank = int(input("enter a number less than 100  :"))
             if rank == True:
-                rank = int(input("for validation retype his classification please  :"))
+                rank = int(input("for validation retype his classification  :"))
             time.sleep(0.0001)
             print()
             # afficher l'identiter et le classement du joueurs
@@ -187,6 +187,7 @@ class TournamentView:
             # afficher la variable "lastname" des deux joueurs opposés
             print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
                   nbr_score1, "  ", nbr_score2)
+            print()
             # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
             player_score.append((players[i]["lastname"], nbr_score1))
             player_score.append((players[i + 4]["lastname"], nbr_score2))
@@ -346,12 +347,12 @@ class TournamentView:
         print()
         print()
         print()
-        print("players         score1                      score2          total scores")
+        print("players         score1                             score2                      total scores")
         print()
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "         +", "                ",
+                print(player_score[i][0], "               ", player_score[i][1], "                +", "                ",
                       player_score2[i][1],
                       "                  =", total_scores)
                 print()
@@ -373,9 +374,211 @@ class TournamentView:
         print()
         print()
         print()
+        # nouvelles variables
+        player_score3 = []
+        array_player3 = []
+        array_player4 = []
+        update_rawk2 = []
+        scores = [1, 0, 0.5]
+        # on enregistre la position des premiers joueurs
+        for i in range(1, 5):
+            array_player3.append(players[(i * 2) - 1]["lastname"])
+        # on enregistre la position des adversaires
+        for i in range(4):
+            array_player4.append(players[i * 2]["lastname"])
+        print()
+        print()
+
+        # demarrage des matchs
+        for i in range(4):
+            print()
+            print()
+            print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
+            print()
+            print()
+            # choisir en mode aléatoire le score
+            nbr_score6 = secrets.choice(scores)
+            nbr_score7 = secrets.choice(scores)
+            if nbr_score6 == nbr_score7:
+                print("EGALITY")
+                print("each player receives 0.5 points")
+                nbr_score6 = 0.5
+                nbr_score7 = 0.5
+                # afficher la variable "lastname" des deux joueurs opposés
+                print(array_player3[i], "  VS  ", array_player4[i], "                             ",
+                      nbr_score6, "  ", nbr_score7)
+
+                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+            if nbr_score6 > nbr_score7:
+                print(array_player3[i], "VS", array_player4[i], "                                 ",
+                      nbr_score6, "  ", nbr_score7)
+                print(array_player3[i], "WON")
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+                print()
+                print()
+            if nbr_score6 < nbr_score7:
+                print(array_player3[i], "VS", array_player4[i], "                                 ",
+                      nbr_score6, "  ", nbr_score7)
+                print(array_player3[i], "LOST")
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+                print()
+                print()
+
+        print()
+        print()
+        print("listing of matches")
+        match2 = player_score3
+        matches2 = list(x for t in match2 for x in t)
+        length_to_split2 = [len(matches2) // 4] * 4
+        lst2 = iter(matches2)
+        match_player_score2 = [list(islice(lst2, elem))
+                              for elem in length_to_split2]
+        print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
+        print(match_player_score2)
+        print()
+        print()
+
+        print()
+        print("list of players with total points")
+        print()
+        print()
+        count = 0
+        for i in player_score3:
+            count = count + 1
+            print(i)
+        print()
+        print()
+        print()
+        print("players         score1                      score2                     score3                total scores")
+        print()
+        for i in range(0, 8):
+            for j in range(0, 1):
+                total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1]
+                print(player_score[i][0], "               ", player_score[i][1], "         +", "                ",
+                      player_score2[i][1],"            +              ",player_score3[i][1],
+                      "                  =", total_scores)
+                print()
+
+        print()
+        print()
+        print("________________new classement____________________")
+        print()
+        for i in range(8):
+            print(players[i]["lastname"], "=>", players[i]["rank"] + player_score[i][1] + player_score2[i][1] + player_score3[i][1])
         print()
         print()
         print()
         print()
         print()
+        print("++++++++++++++++++++++++++++++++++   ROUND4   +++++++++++++++++++++++++++++++++++++++++++++++")
+
         print()
+        print()
+        print()
+        print()
+        # nouvelles variables
+        player_score3 = []
+        array_player3 = []
+        array_player4 = []
+        update_rawk2 = []
+        scores = [1, 0, 0.5]
+        # on enregistre la position des premiers joueurs
+        for i in range(1, 5):
+            array_player3.append(players[(i * 2) - 1]["lastname"])
+        # on enregistre la position des adversaires
+        for i in range(4):
+            array_player4.append(players[i * 2]["lastname"])
+        print()
+        print()
+
+        # demarrage des matchs
+        for i in range(4):
+            print()
+            print()
+            print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
+            print()
+            print()
+            # choisir en mode aléatoire le score
+            nbr_score6 = secrets.choice(scores)
+            nbr_score7 = secrets.choice(scores)
+            if nbr_score6 == nbr_score7:
+                print("EGALITY")
+                print("each player receives 0.5 points")
+                nbr_score6 = 0.5
+                nbr_score7 = 0.5
+                # afficher la variable "lastname" des deux joueurs opposés
+                print(array_player3[i], "  VS  ", array_player4[i], "                             ",
+                      nbr_score6, "  ", nbr_score7)
+
+                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+            if nbr_score6 > nbr_score7:
+                print(array_player3[i], "VS", array_player4[i], "                                 ",
+                      nbr_score6, "  ", nbr_score7)
+                print(array_player3[i], "WON")
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+                print()
+                print()
+            if nbr_score6 < nbr_score7:
+                print(array_player3[i], "VS", array_player4[i], "                                 ",
+                      nbr_score6, "  ", nbr_score7)
+                print(array_player3[i], "LOST")
+                player_score3.append((array_player3[i], nbr_score6))
+                player_score3.append((array_player4[i], nbr_score7))
+                print()
+                print()
+
+        print()
+        print()
+        print("listing of matches")
+        match2 = player_score3
+        matches2 = list(x for t in match2 for x in t)
+        length_to_split2 = [len(matches2) // 4] * 4
+        lst2 = iter(matches2)
+        match_player_score2 = [list(islice(lst2, elem))
+                              for elem in length_to_split2]
+        print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
+        print(match_player_score2)
+        print()
+        print()
+
+        print()
+        print("list of players with total points")
+        print()
+        print()
+        count = 0
+        for i in player_score3:
+            count = count + 1
+            print(i)
+        print()
+        print()
+        print()
+        print("players         score1                      score2                     score3                total scores")
+        print()
+        for i in range(0, 8):
+            for j in range(0, 1):
+                total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1]
+                print(player_score[i][0], "               ", player_score[i][1], "         +", "                ",
+                      player_score2[i][1],"            +              ",player_score3[i][1],
+                      "                  =", total_scores)
+                print()
+
+        print()
+        print()
+        print("________________new classement____________________")
+        print()
+        for i in range(8):
+            print(players[i]["lastname"], "=>", players[i]["rank"] + player_score[i][1] + player_score2[i][1] + player_score3[i][1])
+        print()
+        print()
+        print()
+        print()
+        print()
+
+
