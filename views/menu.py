@@ -48,6 +48,7 @@ class PlayerView:
     def run(self):
         players = []
         scores = [1, 0, 0.5]
+        update = []
         i = 0
         numberplayers = 8
         print()
@@ -118,6 +119,7 @@ class TournamentView:
     def run(self, players):
         score = [0, 1]
         player_score = []
+        update_rawk = []
         print()
         print()
         print("------------------------------ THE TOURNAMENT BEGINS  -------------------------------------\n")
@@ -203,6 +205,14 @@ class TournamentView:
             print()
             print(players[i]["lastname"], "=>", nbr_score1 + players[i]["rank"], players[i + 4]["lastname"], "=>",
                   nbr_score2 + players[i + 4]["rank"], )
+            print()
+            print()
+            update_rawk.append(players[i]["lastname"])
+            update_rawk.append(nbr_score1+players[i]["rank"])
+            update_rawk.append(players[i + 4]["lastname"])
+            update_rawk.append(nbr_score2 + players[i + 4]["rank"])
+            print()
+            print()
 
         print()
         print()
@@ -244,7 +254,7 @@ class TournamentView:
             print(i)
         print()
         print()
-        print("listing of players by ranking")
+        print("new ranking")
         print()
         print()
         # afficher ligne par ligne le contenu de players('lastname',et'rank')
@@ -253,24 +263,26 @@ class TournamentView:
                   players[y]['rank'])
         print()
         print()
-
         print()
         print()
-
         print()
         print("++++++++++++++++++++++++++++++++++++++   ROUND2   +++++++++++++++++++++++++++++++++++++++++++++++++++")
         print()
         print()
         print()
         print()
+        # nouvelles variables
         player_score2 = []
         array_player1 = []
         array_player2 = []
         scores = [1, 0, 0.5]
+        # on enregistre la position des premiers joueurs
         for i in range(1, 5):
             array_player2.append(players[(i * 2) - 1]["lastname"])
+        # on enregistre la position des adversaires
         for i in range(4):
             array_player1.append(players[i * 2]["lastname"])
+        # demarrage des matchs
         for i in range(4):
             print()
             print()
@@ -336,16 +348,14 @@ class TournamentView:
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "       ", "+", "                ",
+                print(player_score[i][0], "               ", player_score[i][1], "         +", "                ",
                       player_score2[i][1],
-                      "              ", "=", total_scores)
-                print(player_score[i][0], "               ", player_score[i][1], "            ",
-                      "+", player_score2[i][1], "      ", "=", "        ", total_scores)
+                      "                  =", total_scores)
                 print()
 
         print()
         print()
-        print("++++++++++++++++++++++++++++++++++   ROUND2 FINISHED   +++++++++++++++++++++++++++++++++++++++++++++++")
+        print()
         print("________mises à jours classement________")
 
         print("++++++++++++++++++++++++++++++++++   ROUND3   +++++++++++++++++++++++++++++++++++++++++++++++")
@@ -357,16 +367,16 @@ class TournamentView:
         print()
         print()
         print()
-        print("========================================   TOURNAMENT FINISHED   =====================================")
         print()
-        player_score2 = []
-        array_player1 = []
-        array_player2 = []
+        print()
+        player_score3 = []
+        array_players1 = []
+        array_players2 = []
         scores = [1, 0, 0.5]
         for i in range(1, 5):
-            array_player2.append(players[(i * 2) - 1]["lastname"])
+            array_players2.append(players[(i * 2) - 1]["lastname"])
         for i in range(4):
-            array_player1.append(players[i * 2]["lastname"])
+            array_players1.append(players[i * 2]["lastname"])
         for i in range(4):
             print()
             print()
@@ -384,32 +394,32 @@ class TournamentView:
                 nbr_score5 = 0.5
                 nbr_score6 = 0.5
                 # afficher la variable "lastname" des deux joueurs opposés
-                print(array_player1[i], "  VS  ", array_player2[i], "                             ",
+                print(array_players1[i], "  VS  ", array_players2[i], "                             ",
                       nbr_score5, "  ", nbr_score6)
                 # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
-                player_score2.append((array_player1[i], nbr_score5))
-                player_score2.append((array_player2[i], nbr_score6))
+                player_score3.append((array_players1[i], nbr_score5))
+                player_score3.append((array_players2[i], nbr_score6))
             if nbr_score5 > nbr_score6:
-                print(array_player1[i], "VS", array_player2[i], "                                 ",
+                print(array_players1[i], "VS", array_players2[i], "                                 ",
                       nbr_score5, "  ", nbr_score6)
                 print(array_player1[i], "WON")
-                player_score2.append((array_player1[i], nbr_score5))
-                player_score2.append((array_player2[i], nbr_score6))
+                player_score3.append((array_players1[i], nbr_score5))
+                player_score3.append((array_players2[i], nbr_score6))
                 print()
                 print()
             if nbr_score5 < nbr_score6:
-                print(array_player1[i], "VS", array_player2[i], "                                 ",
+                print(array_players1[i], "VS", array_players2[i], "                                 ",
                       nbr_score5, "  ", nbr_score6)
-                print(array_player1[i], "LOST")
-                player_score2.append((array_player1[i], nbr_score5))
-                player_score2.append((array_player2[i], nbr_score6))
+                print(array_players1[i], "LOST")
+                player_score3.append((array_players1[i], nbr_score5))
+                player_score3.append((array_players2[i], nbr_score6))
                 print()
                 print()
         print()
         print()
         print("listing of matches")
 
-        match = player_score2
+        match = player_score3
 
         matches = list(x for t in match for x in t)
 
@@ -427,7 +437,7 @@ class TournamentView:
         print()
         print()
         count = 0
-        for i in player_score2:
+        for i in player_score3:
             count = count + 1
             print(i)
         print()
