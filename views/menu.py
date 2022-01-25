@@ -5,13 +5,11 @@ from itertools import islice
 
 
 class MenuView:
-
     def run(self):
         print()
         print()
         print("                                                                       CHESS TOURNAMENT              ")
         print()
-
         message = "              CREATE A NEW PLAYER         \n " \
                   "                                          \n " \
                   "        1   create a new players          \n " \
@@ -33,38 +31,30 @@ class MenuView:
                   "                                                                                                        \n" \
                   "                                                                                                        \n" \
                   "                                                    or enter the number 7 to quit                         "
-
         time.sleep(0.0001)
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
             time.sleep(0.0001)
-
         print()
         print()
         print()
-
         started = input("                   ENTER A NUMBER TO START            =>: ")
-
         time.sleep(0)
         return started
 
 
 class PlayerView:
-
     def run(self):
         players = []
         scores = [1, 0, 0.5]
         i = 0
         numberplayers = 8
-
         print()
-
         for i in range(numberplayers):
             player = "player"
             print()
             message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
-
             for char in message:
                 sys.stdout.write(char)
                 sys.stdout.flush()
@@ -79,24 +69,20 @@ class PlayerView:
             birth_year = input("birth_year? : ")
             sex = input("sex m/f? : ")
             age = input("age? : ")
-
             rank = 0
             # obliger l'utilisateur à entrer un nombre < 100
             while True:
                 try:
                     rank = int(input("rank ?:  "))
-
                     break
                 except ValueError:
                     print("Enter a number less than 100.")
-
             if rank > 100:
                 rank = int(input("enter a number less than 100  :"))
             if rank == False:
                 rank = int(input("enter a number less than 100  :"))
             if rank == True:
                 rank = int(input("for validation retype his classification please  :"))
-
             time.sleep(0.0001)
             print()
             # afficher l'identiter et le classement du joueurs
@@ -105,7 +91,6 @@ class PlayerView:
             print("lastname => ", lastname)
             print("rank =>", rank)
             print()
-
             time.sleep(0)
             # création des dictionnaires "identités complètes avec classement"
             # numéroter les clées,les valeurs,les données avec str(i+1)
@@ -118,7 +103,6 @@ class PlayerView:
             key_players = ['lastname', 'firstname', 'birth_date', 'birth_month', 'birth_year', 'sex', 'age', 'rank']
             value_players = [lastname, firstname, birth_date, birth_month, birth_year, sex, age, rank]
             data_players = dict(zip(key_players, value_players))
-
             print()
             # enregistrer les dictionnaires dans une liste "players"
             players.append(data_players)
@@ -127,16 +111,13 @@ class PlayerView:
             count = count + 1
             # afficher le contenu de la liste players
             print("player", count, i)
-
         return players
 
 
 class TournamentView:
-
     def run(self, players):
         score = [0, 1]
         player_score = []
-
         print()
         print()
         print("------------------------------ THE TOURNAMENT BEGINS  -------------------------------------\n")
@@ -149,7 +130,6 @@ class TournamentView:
         print("identity => rank")
         for i in range(8):
             print(players[i]["lastname"], "=>       ", players[i]["rank"])
-
         print()
         print()
         print()
@@ -169,7 +149,6 @@ class TournamentView:
         for i in players:
             count = count + 1
             print("player", count, i)
-
         print()
         print()
         print()
@@ -187,7 +166,6 @@ class TournamentView:
             if count == 4:
                 print()
                 print("the last 4 in the standings are\n")
-
         print()
         print()
         for i in range(4):
@@ -196,24 +174,20 @@ class TournamentView:
             print("      MATCH  ", i + 1, "                         SCORE  ", i + 1, "                           \n")
             print()
             print()
-
             # choisir en mode aléatoire le score
             nbr_score1 = secrets.choice(score)
             nbr_score2 = secrets.choice(score)
-
             if nbr_score1 == nbr_score2:
                 print("EGALITY")
                 print("each player receives 0.5 points")
                 nbr_score1 = 0.5
                 nbr_score2 = 0.5
-
             # afficher la variable "lastname" des deux joueurs opposés
             print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
                   nbr_score1, "  ", nbr_score2)
             # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
             player_score.append((players[i]["lastname"], nbr_score1))
             player_score.append((players[i + 4]["lastname"], nbr_score2))
-
             if nbr_score1 > nbr_score2:
                 print(players[i]["lastname"], "WON")
                 print()
@@ -222,6 +196,13 @@ class TournamentView:
                 print(players[i]["lastname"], "LOST")
                 print()
                 print()
+            print()
+            print()
+            print("________mises à jours classement________")
+            print()
+            print()
+            print(players[i]["lastname"], "=>", nbr_score1 + players[i]["rank"], players[i + 4]["lastname"], "=>",
+                  nbr_score2 + players[i + 4]["rank"], )
 
         print()
         print()
@@ -237,23 +218,19 @@ class TournamentView:
         m[count][count + 1] = player_score[0][1]
         m[count][count + 2] = player_score[1][0]
         m[count][count + 3] = player_score[1][1]
-
         m[count + 1][count] = player_score[2][0]
         m[count + 1][count + 1] = player_score[2][1]
         m[count + 1][count + 2] = player_score[3][0]
         m[count + 1][count + 3] = player_score[3][1]
-
         m[count + 2][count] = player_score[4][0]
         m[count + 2][count + 1] = player_score[4][1]
         m[count + 2][count + 2] = player_score[5][0]
         m[count + 2][count + 3] = player_score[5][1]
-
         m[count + 3][count] = player_score[6][0]
         m[count + 3][count + 1] = player_score[6][1]
         m[count + 3][count + 2] = player_score[7][0]
         m[count + 3][count + 3] = player_score[7][1]
         print(m)
-
         print()
         print()
         print()
@@ -265,7 +242,6 @@ class TournamentView:
         for i in player_score:
             count = count + 1
             print(i)
-
         print()
         print()
         print("listing of players by ranking")
@@ -277,13 +253,9 @@ class TournamentView:
                   players[y]['rank'])
         print()
         print()
-        print("________mises à jours classement________")
-        print()
-        print()
-        for y in range(8):
-            if players[y]['lastname'] == player_score[y][0]:
-                print("identity player : ",players[y]['lastname']," new rawking : ",players[y]['rank']+player_score[y][1])
 
+        print()
+        print()
 
         print()
         print("++++++++++++++++++++++++++++++++++++++   ROUND2   +++++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -305,11 +277,9 @@ class TournamentView:
             print("      MATCH  ", i + 1, "                            SCORE  ", i + 1, "                           \n")
             print()
             print()
-
             # choisir en mode aléatoire le score
             nbr_score5 = secrets.choice(scores)
             nbr_score6 = secrets.choice(scores)
-
             if nbr_score5 == nbr_score6:
                 print("EGALITY")
                 print("each player receives 0.5 points")
@@ -340,18 +310,14 @@ class TournamentView:
         print()
         print()
         print("listing of matches")
-
         match = player_score2
-
         matches = list(x for t in match for x in t)
-
         length_to_split = [len(matches) // 4] * 4
         lst = iter(matches)
         match_player_score = [list(islice(lst, elem))
                               for elem in length_to_split]
         print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
         print(match_player_score)
-
         print()
         print()
         print()
@@ -365,22 +331,22 @@ class TournamentView:
         print()
         print()
         print()
-
         print("players         score1                      score2          total scores")
         print()
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1],"            ",
-                      "+", player_score2[i][1],"      ","=","        ", total_scores)
+                print(player_score[i][0], "               ", player_score[i][1], "       ", "+", "                ",
+                      player_score2[i][1],
+                      "              ", "=", total_scores)
+                print(player_score[i][0], "               ", player_score[i][1], "            ",
+                      "+", player_score2[i][1], "      ", "=", "        ", total_scores)
                 print()
 
         print()
         print()
+        print("++++++++++++++++++++++++++++++++++   ROUND2 FINISHED   +++++++++++++++++++++++++++++++++++++++++++++++")
         print("________mises à jours classement________")
-
-
-
 
         print("++++++++++++++++++++++++++++++++++   ROUND3   +++++++++++++++++++++++++++++++++++++++++++++++")
         print()
@@ -391,6 +357,7 @@ class TournamentView:
         print()
         print()
         print()
+        print("========================================   TOURNAMENT FINISHED   =====================================")
         print()
         player_score2 = []
         array_player1 = []
