@@ -336,7 +336,7 @@ class TournamentView:
                 total_scores = player_score[i][1] + player_score[i][1] + player_score2[i][1]
                 print()
                 print("", "player  | score1", "|", "score2  | total score")
-                print("", "---------------------------------------------------------------------------------")
+                print("", "--------------------------------------------------------------------------------")
                 for nombre in range(1):
                     print("  ", player_score[i][0], "    |", " ", player_score[i][1], " |", "  ", player_score2[i][1],
                           " ",  "", "|        "
