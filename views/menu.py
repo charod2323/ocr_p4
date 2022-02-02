@@ -209,7 +209,7 @@ class TournamentView:
             print()
             print()
             update_rawk.append(players[i]["lastname"])
-            update_rawk.append(nbr_score1+players[i]["rank"])
+            update_rawk.append(nbr_score1 + players[i]["rank"])
             update_rawk.append(players[i + 4]["lastname"])
             update_rawk.append(nbr_score2 + players[i + 4]["rank"])
             print()
@@ -257,7 +257,7 @@ class TournamentView:
         array_player1 = []
         array_player2 = []
         update_rawk2 = []
-        scores = [1, 0, 0.5]
+        scores = [0,1]
         # on enregistre la position des premiers joueurs
         for i in range(1, 5):
             array_player2.append(players[(i * 2) - 1]["lastname"])
@@ -330,22 +330,25 @@ class TournamentView:
         print()
         print()
         print()
-        print("players         score1                             score2                      total scores")
         print()
         for i in range(0, 8):
             for j in range(0, 1):
-                total_scores = player_score[i][1] + player_score2[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "                +", "                ",
-                      player_score2[i][1],
-                      "                  =", total_scores)
+                total_scores = player_score[i][1] + player_score[i][1] + player_score2[i][1]
                 print()
+                print("", "player  | score1", "|", "score2  | total score")
+                print("", "---------------------------------------------------------------------------------")
+                for nombre in range(1):
+                    print("  ", player_score[i][0], "    |", " ", player_score[i][1], " |", "  ", player_score2[i][1],
+                          " ",  "", "|        "
+                          , total_scores, "")
+                    print("", "------------------------------------------------------------------------------")
 
         print()
         print()
         print("________________new classement____________________")
         print()
         for i in range(8):
-            print(players[i]["lastname"],"=>",players[i]["rank"]+player_score[i][1]+player_score2[i][1])
+            print(players[i]["lastname"] ,"=>" ,players[i]["rank" ] +player_score[i][1 ] +player_score2[i][1])
         print()
         print()
         print()
@@ -362,7 +365,7 @@ class TournamentView:
         array_player3 = []
         array_player4 = []
         update_rawk2 = []
-        scores = [1, 0, 0.5]
+        scores = [0,1]
         # on enregistre la position des premiers joueurs
         for i in range(1, 5):
             array_player3.append(players[(i * 2) - 1]["lastname"])
@@ -419,7 +422,7 @@ class TournamentView:
         length_to_split2 = [len(matches2) // 4] * 4
         lst2 = iter(matches2)
         match_player_score2 = [list(islice(lst2, elem))
-                              for elem in length_to_split2]
+                               for elem in length_to_split2]
         print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
         print(match_player_score2)
         print()
@@ -436,15 +439,18 @@ class TournamentView:
         print()
         print()
         print()
-        print("players         score1                      score2                     score3                total scores")
         print()
         for i in range(0, 8):
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1]
-                print(player_score[i][0], "               ", player_score[i][1], "         +", "                ",
-                      player_score2[i][1],"            +              ",player_score3[i][1],
-                      "                  =", total_scores)
                 print()
+                print("", "player  | score1", "|", "score2  | score3", "", " total score")
+                print("", "--------------------------------------------------")
+                for nombre in range(1):
+                    print("  ", player_score[i][0], "    |", " ", player_score[i][1], " |", "  ", player_score2[i][1],
+                          " ", "| ", player_score3[i][1], "  ", "", "|        "
+                          , total_scores, "")
+                    print("", "------------------------------------------------")
 
         print()
         print()
@@ -467,7 +473,7 @@ class TournamentView:
         array_player4 = []
         array_player5 = []
         update_rawk3 = []
-        scores = [1, 0, 0.5]
+        scores = [0,1]
         # on enregistre la position des premiers joueurs
         for i in range(1, 5):
             array_player4.append(players[(i * 2) - 1]["lastname"])
@@ -525,7 +531,7 @@ class TournamentView:
         length_to_split3 = [len(matches3) // 4] * 4
         lst3 = iter(matches3)
         match_player_score3 = [list(islice(lst3, elem))
-                              for elem in length_to_split3]
+                               for elem in length_to_split3]
         print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
         print(match_player_score3)
         print()
@@ -547,10 +553,11 @@ class TournamentView:
             for j in range(0, 1):
                 total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1] + player_score4[i][1]
                 print()
-                print("", "player  | score1","|", "score2  | score3","|","score4  | total score")
+                print("", "player  | score1" ,"|", "score2  | score3" ,"|" ,"score4  | total score")
                 print("", "---------------------------------------------------------------------------------")
                 for nombre in range(1):
-                    print("  ",player_score[i][0],"    |", " ", player_score[i][1], " |", "  ",player_score2[i][1], " ","| ",player_score3[i][1], "   |","  ",player_score4[i][1],"","|        ",total_scores,"")
+                    print("  " ,player_score[i][0] ,"    |", " ", player_score[i][1], " |", "  " ,player_score2[i][1], " " ,"| " ,player_score3[i][1], "   |" ,"  " ,player_score4[i][1] ,"" ,"|        "
+                          ,total_scores ,"")
                     print("", "------------------------------------------------------------------------------")
 
         print()
@@ -565,5 +572,3 @@ class TournamentView:
         print()
         print()
         print("==================================   END OF TOURNAMENT ============================================")
-
-
