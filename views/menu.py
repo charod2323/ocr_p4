@@ -1,3 +1,4 @@
+
 import secrets
 import sys
 import time
@@ -333,7 +334,7 @@ class TournamentView:
         print()
         for i in range(0, 8):
             for j in range(0, 1):
-                total_scores = player_score[i][1] + player_score[i][1] + player_score2[i][1]
+                total_scores = player_score[i][1] + player_score2[i][1]
                 print()
                 print("", "player  | score1", "|", "score2  | total score")
                 print("", "--------------------------------------------------------------------------------")
@@ -470,16 +471,16 @@ class TournamentView:
         print()
         # nouvelles variables
         player_score4 = []
-        array_player4 = []
         array_player5 = []
+        array_player6 = []
         update_rawk3 = []
-        scores = [0,1]
+        scores = [0, 1]
         # on enregistre la position des premiers joueurs
         for i in range(1, 5):
-            array_player4.append(players[(i * 2) - 1]["lastname"])
+            array_player5.append(players[(i * 2) - 1]["lastname"])
         # on enregistre la position des adversaires
         for i in range(4):
-            array_player5.append(players[i * 2]["lastname"])
+            array_player6.append(players[i * 2]["lastname"])
         print()
         print()
 
@@ -499,41 +500,40 @@ class TournamentView:
                 nbr_score6 = 0.5
                 nbr_score7 = 0.5
                 # afficher la variable "lastname" des deux joueurs opposés
-                print(array_player4[i], "  VS  ", array_player5[i], "                             ",
+                print(array_player5[i], "  VS  ", array_player6[i], "                             ",
                       nbr_score6, "  ", nbr_score7)
 
-                # enregistrer variables players[] et nbr_score dans la liste player_score sous forme de tuple
-                player_score4.append((array_player4[i], nbr_score6))
-                player_score4.append((array_player5[i], nbr_score7))
+                # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+                player_score4.append((array_player5[i], nbr_score6))
+                player_score4.append((array_player6[i], nbr_score7))
             if nbr_score6 > nbr_score7:
-                print(array_player4[i], "VS", array_player5[i], "                                 ",
+                print(array_player5[i], "VS", array_player6[i], "                                 ",
                       nbr_score6, "  ", nbr_score7)
-                print(array_player4[i], "WON")
-                player_score4.append((array_player4[i], nbr_score6))
-                player_score4.append((array_player5[i], nbr_score7))
+                print(array_player5[i], "WON")
+                player_score4.append((array_player5[i], nbr_score6))
+                player_score4.append((array_player6[i], nbr_score7))
                 print()
                 print()
             if nbr_score6 < nbr_score7:
-                print(array_player4[i], "VS", array_player5[i], "                                 ",
+                print(array_player5[i], "VS", array_player6[i], "                                 ",
                       nbr_score6, "  ", nbr_score7)
-                print(array_player4[i], "LOST")
-                player_score4.append((array_player4[i], nbr_score6))
-                player_score4.append((array_player5[i], nbr_score7))
+                print(array_player5[i], "LOST")
+                player_score4.append((array_player5[i], nbr_score6))
+                player_score4.append((array_player6[i], nbr_score7))
                 print()
                 print()
 
         print()
         print()
         print("listing of matches")
-        print()
-        match3 = player_score4
-        matches3 = list(x for t in match3 for x in t)
-        length_to_split3 = [len(matches3) // 4] * 4
-        lst3 = iter(matches3)
-        match_player_score3 = [list(islice(lst3, elem))
-                               for elem in length_to_split3]
+        match4 = player_score4
+        matches4 = list(x for t in match4 for x in t)
+        length_to_split4 = [len(matches4) // 4] * 4
+        lst4 = iter(matches4)
+        match_player_score4 = [list(islice(lst4, elem))
+                               for elem in length_to_split4]
         print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
-        print(match_player_score3)
+        print(match_player_score4)
         print()
         print()
 
@@ -551,24 +551,42 @@ class TournamentView:
         print()
         for i in range(0, 8):
             for j in range(0, 1):
-                total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1] + player_score4[i][1]
+                total_scores = player_score[i][1] + player_score2[i][1] + player_score3[i][1]+ player_score4[i][1]
                 print()
-                print("", "player  | score1" ,"|", "score2  | score3" ,"|" ,"score4  | total score")
-                print("", "---------------------------------------------------------------------------------")
+                print("", "player  | score1", "|", "score2  | score3", "|","score4 | total score")
+                print("", "--------------------------------------------------")
                 for nombre in range(1):
-                    print("  " ,player_score[i][0] ,"    |", " ", player_score[i][1], " |", "  " ,player_score2[i][1], " " ,"| " ,player_score3[i][1], "   |" ,"  " ,player_score4[i][1] ,"" ,"|        "
-                          ,total_scores ,"")
-                    print("", "------------------------------------------------------------------------------")
+                    print("  ", player_score[i][0], "    |", " ", player_score[i][1], " |", "  ", player_score2[i][1],
+                          " ", "| ", player_score3[i][1], "  ", "     ", "| ",player_score4[i][1]
+                          , total_scores, "")
+                    print("", "------------------------------------------------")
 
         print()
         print()
         print("________________new classement____________________")
         print()
         for i in range(8):
-            print(players[i]["lastname"], "=>", players[i]["rank"] + player_score[i][1] + player_score2[i][1] + player_score3[i][1] + player_score4[i][1])
+            print(players[i]["lastname"], "=>",
+                  players[i]["rank"] + player_score[i][1] + player_score2[i][1] + player_score3[i][1]+ player_score4[i][1])
+        print()
+        return player_score, player_score2, player_score3, player_score4
+
+
+class ReportView:
+    def run(self, players, player_score,player_score2,player_score3,player_score4):
+        print("player display in alphabetical order")
+        player_order = sorted(players, key=lambda d: d["lastname"])
+        count = 0
+        for i in player_order:
+            count = count + 1
+            print(i)
+
+
+        print("________________new classement____________________")
+        print()
+
+
+
+
         print()
         print()
-        print()
-        print()
-        print()
-        print("==================================   END OF TOURNAMENT ============================================")
