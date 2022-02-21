@@ -1,25 +1,29 @@
-from views.menu import MenuView, PlayerView, TournamentView, ReportView
+from models.players import Player
+from views.MenuViews import MenuView
 
 
-class MenuController:
+class Controller:
+    """
+    TODO:
+    """
+
     def run(self):
-        players = []
-        player_score = []
-        player_score2 = []
-        player_score3 = []
-        player_score4 = []
-        while True:
-            menu_view = MenuView()
-            started = menu_view.run()
-            print(f"{started=}")
-            if started == "1":
-                player_view = PlayerView()
-                players = player_view.run()
-            if players and started == "4":
-                tournament_view = TournamentView()
-                tournament_view.run(players)
-            if started == "3":
-                report_view = ReportView()
-                report_view.run(players,player_score,player_score2,player_score3,player_score4)
-            if started == "7":
-                return
+        v = MenuView()
+        choice = v.display_menu()
+        if choice == 1:
+            self.create_new_player()
+
+    def create_new_player(self):
+        v = MenuView()
+        infos = v.get_new_player_info()
+        new_player = Player(
+            lastname=infos['lastname'],
+            firstname=infos['firstname'],
+            age=infos['age'],
+            birth_date=infos['birth_date'],
+            birth_month=infos['birth_month'],
+            birth_year=infos['birth_year'],
+            sex=infos['sex']
+
+        )
+        print("Nouveau player cree : ", new_player)
