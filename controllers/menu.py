@@ -2,15 +2,14 @@ from models.players import Player
 from views.MenuViews import MenuView
 
 
-class Controller:
-    """
-    TODO:
-    """
+class Controller():
+
+
 
     def run(self):
         v = MenuView()
-        choice = v.display_menu()
-        if choice == 1:
+        your_request = v.display_menu()
+        if your_request == 1:
             self.create_new_player()
 
     def create_new_player(self):
