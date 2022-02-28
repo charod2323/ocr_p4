@@ -4,4 +4,3 @@ class Game:
         self.player2 = player2
         self.score = None
         self.list_players_games = None
-

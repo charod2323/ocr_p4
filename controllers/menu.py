@@ -1,28 +1,25 @@
-from models.players import Player
-from views.MenuViews import MenuView
+from views.MenuViews import MenuView, PlayerView
 
 
-class Controller():
-
-
-
+class MenuController:
     def run(self):
-        v = MenuView()
-        your_request = v.display_menu()
-        if your_request == 1:
-            self.create_new_player()
+        players = []
+        while True:
+            menu_view = MenuView()
+            started = menu_view.run()
+            print(f"{started=}")
+            if started == "1":
+                player_view = PlayerView()
+                listings = player_view.create_new_player()
+                print(listings)
+                ranking = player_view.verification_rank()
+                player_view.display_listing(listing)
 
-    def create_new_player(self):
-        v = MenuView()
-        infos = v.get_new_player_info()
-        new_player = Player(
-            lastname=infos['lastname'],
-            firstname=infos['firstname'],
-            age=infos['age'],
-            birth_date=infos['birth_date'],
-            birth_month=infos['birth_month'],
-            birth_year=infos['birth_year'],
-            sex=infos['sex']
 
-        )
-        print("Nouveau player cree : ", new_player)
+"""
+            if players and started == "4":
+                tournament_view = TournamentView()
+                tournament_view.run(players)
+            if started == "7":
+                return
+"""
