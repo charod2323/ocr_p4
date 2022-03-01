@@ -13,7 +13,7 @@ class MenuController:
                 listings = player_view.create_new_player()
                 print(listings)
                 ranking = player_view.verification_rank()
-                player_view.display_listing(listing)
+                player_view.display_listing()
 
 
 """

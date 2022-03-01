@@ -97,7 +97,7 @@ class PlayerView:
         print()
         return rank
 
-    def display_listing(self,listing):
+    def display_listing(self):
         i = 0
         key_player = "key_player"
         key_players = key_player + str(i + 1)
