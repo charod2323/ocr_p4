@@ -10,10 +10,12 @@ class MenuController:
             print(f"{started=}")
             if started == "1":
                 player_view = PlayerView()
-                listings = player_view.create_new_player()
-                print(listings)
+                # Create a new player
+                player = player_view.create_new_player()
+                # Add new player to list containing all players
+                players.append(player)
                 ranking = player_view.verification_rank()
-                player_view.display_listing()
+                player_view.display_listing(players)
 
 
 """

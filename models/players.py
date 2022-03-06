@@ -9,4 +9,3 @@ class Player:
         self.sex = sex
 
 
-

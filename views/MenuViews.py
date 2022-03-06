@@ -1,7 +1,8 @@
-#import secrets
 import sys
 import time
-#from itertools import islice
+
+
+# from itertools import islice
 
 
 class MenuView:
@@ -48,36 +49,27 @@ class PlayerView:
 
     def create_new_player(self):
         i = 0
-
+        player = {}
         print()
         print()
-        message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
-        for char in message:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.0001)
-        print()
-        print()
-
-        # création du joueurs par l'utilisateur
-        value_player = []
-
-        lastname = input("lastname? : ")
-        firstname = input("firstname? : ")
-        birth_date = input("birth_date? : ")
-        birth_month = input("birth_month? : ")
-        birth_year = input("birth_year? : ")
-        sex = input("sex m/f? : ")
-        age = input("age? : ")
-
-        value_player.append(lastname)
-        value_player.append(firstname)
-        value_player.append(birth_date)
-        value_player.append(birth_year)
-        value_player.append(birth_month)
-        value_player.append(sex)
-        value_player.append(age)
-        return value_player
+        for i in range(8):
+            message = ("..................THE PlAYER NUMBER {}.................".format(i + 1))
+            for char in message:
+                sys.stdout.write(char)
+                sys.stdout.flush()
+                time.sleep(0.0001)
+            print()
+            print()
+            player = {
+                "lastname": input("lastname?"),
+                "firstname": input("firstname?"),
+                "age": input("age?"),
+                "birthdate": input("birthdate?"),
+            }
+            print()
+            print("players:", player)
+            print()
+            print()
 
     def verification_rank(self):
         # obliger l'utilisateur à entrer un nombre < 100
@@ -96,19 +88,3 @@ class PlayerView:
         time.sleep(0.0001)
         print()
         return rank
-
-    def display_listing(self):
-        i = 0
-        key_player = "key_player"
-        key_players = key_player + str(i + 1)
-        value_player = "value_player"
-        value_players = value_player + str(i + 1)
-        data_player = "data_player"
-        data_players = data_player + str(i + 1)
-        key_players = ['lastname', 'firstname', 'birth_date', 'birth_month', 'birth_year', 'sex', 'age',
-                       'rank']
-        data_players = dict(zip(key_players, listing))
-        print()
-        players = []
-        players.append(data_players)
-        print(players)
