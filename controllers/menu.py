@@ -1,4 +1,4 @@
-from views.MenuViews import MenuView, PlayerView
+from views.MenuViews import MenuView, PlayerView, TournamentView
 
 
 class MenuController:
@@ -7,21 +7,34 @@ class MenuController:
         while True:
             menu_view = MenuView()
             started = menu_view.run()
-            print(f"{started=}")
+
             if started == "1":
-                player_view = PlayerView()
-                # Create a new player
-                player = player_view.create_new_player()
-                # Add new player to list containing all players
-                players.append(player)
-                ranking = player_view.verification_rank()
-                player_view.display_listing(players)
+                print(" 8 players by default")
+                for i in range(8):
+                    print()
+                    print()
+                    print()
+                    print("...........................................PLAYER NUMBER ......",i+1)
+                    print()
+                    player_view = PlayerView()
+                    # Create a new player
+                    player = player_view.create_new_player()
+                    # Add new player to list containing all players
+
+                    ranking = player_view.verification_rank()
+                    player['ranking'] = ranking
+                    players.append(player)
+                print()
+                count = 0
+                # afficher le contenu players ligne par ligne
+                for i in players:
+                    count = count + 1
+                    print("player", count, i)
 
 
-"""
-            if players and started == "4":
+            if started == "4":
                 tournament_view = TournamentView()
-                tournament_view.run(players)
+                players = tournament_view.run(players)
+                tournament_view.split_list(players)
             if started == "7":
                 return
-"""
