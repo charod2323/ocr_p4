@@ -14,7 +14,7 @@ class MenuController:
                     print()
                     print()
                     print()
-                    print("...........................................PLAYER NUMBER ......",i+1)
+                    print("...........................................PLAYER NUMBER ......", i + 1)
                     print()
                     player_view = PlayerView()
                     # Create a new player
@@ -31,9 +31,11 @@ class MenuController:
                     count = count + 1
                     print("player", count, i)
 
-
             if started == "4":
+                ref_tournament = []
                 tournament_view = TournamentView()
+                ref = tournament_view.reference_tournament()
+                ref_tournament.append(ref)
                 players = tournament_view.run(players)
                 tournament_view.split_list(players)
             if started == "7":

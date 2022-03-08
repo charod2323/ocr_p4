@@ -82,6 +82,14 @@ class PlayerView:
 
 
 class TournamentView:
+    def reference_tournament(self):
+        print()
+        ref = {'name_tournament': input("name tournament??:  "),
+               'location_tournament': input("location_tournament??:  "),
+               'date_tournament': input("date_tournament??:  "),
+               'description_tournament': input("description_tournament:  "),
+               'control_time': input(" bullet or blitz ou un coup rapide??:  ")}
+        return ref
 
     def run(self, players):
         print()
@@ -108,8 +116,6 @@ class TournamentView:
             print("player", count, i)
         return players
 
-
-
     def split_list(self, players):
         print()
         print("+++++++++++++++++++++++++++++++++++++++   ROUND1   +++++++++++++++++++++++++++++++++++++++++++++\n")
@@ -126,26 +132,19 @@ class TournamentView:
         print()
         print()
 
+    def players_face_to_face(self, players):
+        for i in range(4):
+            print()
+            print()
+            print("      MATCH  ", i + 1, "                                                    \n")
+            print()
+            print()
+            # afficher la variable "lastname" des deux joueurs opposés
+            print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ")
+            print()
 
-"""
-    for i in range(4):
-        print()
-        print()
-        print("      MATCH  ", i + 1, "                         SCORE  ", i + 1, "                           \n")
-        print()
-        print()
-        # choisir en mode aléatoire le score
-        nbr_score1 = secrets.choice(score)
-        nbr_score2 = secrets.choice(score)
-        if nbr_score1 == nbr_score2:
-            print("EGALITY")
-            print("each player receives 0.5 points")
-            nbr_score1 = 0.5
-            nbr_score2 = 0.5
-        # afficher la variable "lastname" des deux joueurs opposés
-        print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ",
-              nbr_score1, "  ", nbr_score2)
-        print()
+
+"""        
         # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
         player_score.append((players[i]["lastname"], nbr_score1))
         player_score.append((players[i + 4]["lastname"], nbr_score2))
