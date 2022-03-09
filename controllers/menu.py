@@ -34,9 +34,11 @@ class MenuController:
             if started == "4":
                 ref_tournament = []
                 tournament_view = TournamentView()
-                ref = tournament_view.reference_tournament()
-                ref_tournament.append(ref)
+                ref = tournament_view.reference_tournament(players)
+                ref_tournament.append(ref_tournament)
                 players = tournament_view.run(players)
                 tournament_view.split_list(players)
+                tournament_view.players_face_to_face(players)
+
             if started == "7":
                 return

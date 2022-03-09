@@ -82,14 +82,17 @@ class PlayerView:
 
 
 class TournamentView:
-    def reference_tournament(self):
+    def reference_tournament(self,players):
         print()
-        ref = {'name_tournament': input("name tournament??:  "),
-               'location_tournament': input("location_tournament??:  "),
-               'date_tournament': input("date_tournament??:  "),
-               'description_tournament': input("description_tournament:  "),
-               'control_time': input(" bullet or blitz ou un coup rapide??:  ")}
-        return ref
+        ref_tournament = {'name_tournament': input("            name tournament??:  "),
+               'location_tournament': input("                   location_tournament??:  "),
+               'date_tournament': input("                       date_tournament??:  "),
+               'description_tournament': input("               description_tournament:  "),
+               'control_time': input("                         bullet or blitz ou un coup rapide??:  "),
+               'player': players}
+        print()
+        print("")
+        return ref_tournament
 
     def run(self, players):
         print()
@@ -140,12 +143,12 @@ class TournamentView:
             print()
             print()
             # afficher la variable "lastname" des deux joueurs opposés
-            print(players[i]["lastname"], "  VS  ", players[i + 4]["lastname"], "                             ")
+            print (players[i]['lastname'],"    VS    ",players[i+4]['lastname'])
             print()
 
 
 """        
-        # enregistrer variables players[] et nbr_sore dans la liste player_score sous forme de tuple
+        # enregistrer variables players[] et nbr_score dans la liste player_score sous forme de tuple
         player_score.append((players[i]["lastname"], nbr_score1))
         player_score.append((players[i + 4]["lastname"], nbr_score2))
         if nbr_score1 > nbr_score2:
