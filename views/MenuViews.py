@@ -82,16 +82,16 @@ class PlayerView:
 
 
 class TournamentView:
-    def reference_tournament(self,players):
+    def reference_report(self, players):
         print()
         ref_tournament = {'name_tournament': input("            name tournament??:  "),
-               'location_tournament': input("                   location_tournament??:  "),
-               'date_tournament': input("                       date_tournament??:  "),
-               'description_tournament': input("               description_tournament:  "),
-               'control_time': input("                         bullet or blitz ou un coup rapide??:  "),
-               'player': players}
+                          'location_tournament': input("                   location_tournament??:  "),
+                          'date_tournament': input("                       date_tournament??:  "),
+                          'description_tournament': input("               description_tournament:  "),
+                          'control_time': input("                         bullet or blitz ou un coup rapide??:  "),
+                          'player': players}
         print()
-        print("")
+        print()
         return ref_tournament
 
     def run(self, players):
@@ -136,6 +136,8 @@ class TournamentView:
         print()
 
     def players_face_to_face(self, players):
+        info_winner = {}
+        infos_winners = []
         for i in range(4):
             print()
             print()
@@ -143,67 +145,19 @@ class TournamentView:
             print()
             print()
             # afficher la variable "lastname" des deux joueurs opposés
-            print (players[i]['lastname'],"    VS    ",players[i+4]['lastname'])
+            print(players[i]['lastname'], "    VS    ", players[i + 4]['lastname'])
             print()
+            info_winner = {"lastname_winner": input(" note the name of the winning player:  "),
+                           "score_winner": input(" note the score of the winning player:  ")}
+            infos_winners.append(info_winner)
+            print()
+            print()
+        # afficher le contenu players ligne par ligne
+        for i in infos_winners:
+            print(i)
 
+        return infos_winners
+    def update_rawk(self, players,infos_winners):
 
-"""        
-        # enregistrer variables players[] et nbr_score dans la liste player_score sous forme de tuple
-        player_score.append((players[i]["lastname"], nbr_score1))
-        player_score.append((players[i + 4]["lastname"], nbr_score2))
-        if nbr_score1 > nbr_score2:
-            print(players[i]["lastname"], "WON")
-            print()
-            print()
-        if nbr_score1 < nbr_score2:
-            print(players[i]["lastname"], "LOST")
-            print()
-            print()
+        print("                                 ROUND2                                             ")
         print()
-        print()
-        print("________mises à jours classement________")
-        print()
-        print()
-        print(players[i]["lastname"], "=>", nbr_score1 + players[i]["rank"], players[i + 4]["lastname"], "=>",
-              nbr_score2 + players[i + 4]["rank"], )
-        print()
-        print()
-        update_rawk.append(players[i]["lastname"])
-        update_rawk.append(nbr_score1 + players[i]["rank"])
-        update_rawk.append(players[i + 4]["lastname"])
-        update_rawk.append(nbr_score2 + players[i + 4]["rank"])
-        print()
-        print()
-    print()
-    print("listing of matches")
-    match = player_score
-    matches = list(x for t in match for x in t)
-    length_to_split = [len(matches) // 4] * 4
-    lst = iter(matches)
-    match_player_score = [list(islice(lst, elem))
-                          for elem in length_to_split]
-    print("     MATCH1          MATCH2           MATCH3             MATCH4   ")
-    print(match_player_score)
-
-    print()
-    print()
-    print()
-    print("list of players with total points")
-    print()
-    print()
-    # afficher ligne par ligne le contenu de player_score
-    count = 0
-    for i in player_score:
-        count = count + 1
-        print(i)
-    print()
-    print()
-    print("new ranking")
-    print()
-    print()
-    print(update_rawk)
-    print()
-    print()
-    print()
-    print()
-"""
