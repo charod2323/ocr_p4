@@ -31,7 +31,7 @@ class MenuController:
                     count = count + 1
                     print("player", count, i)
 
-            if started == "4":
+            if started == "3":
                 ref_tournament = []
                 tournament_view = TournamentView()
                 ref = tournament_view.reference_report(players)

@@ -9,39 +9,35 @@ class MenuView:
     def run(self):
         print()
         print()
-        print("                                                                       CHESS TOURNAMENT              ")
+        print("CHESS TOURNAMENT              ")
         print()
-        message = "              CREATE A NEW PLAYER         \n " \
-                  "                                          \n " \
-                  "        1   create a new players          \n " \
-                  "        2   classification update         \n " \
-                  "        3        report                   \n " \
-                  "                                          \n " \
-                  "                                          \n" \
-                  "                                          \n" \
-                  "                                          \n" \
-                  "             CREATE A TOURNAMENT          \n " \
-                  "                                          \n " \
-                  "        4 create a new tournament         \n " \
-                  "        5         scores                  \n " \
-                  "        6         report                  \n" \
-                  "         7          quit                   \n " \
-                  "                                           \n" \
-                  "                                           \n" \
-                  " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~\n" \
-                  "                                                                                                        \n" \
-                  "                                                                                                        \n" \
-                  "                                                    or enter the number 7 to quit                         "
-        time.sleep(0.0001)
+        message = " CREATE A NEW PLAYER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n " \
+                  "                                                        \n " \
+                  "1   create a new players                                \n " \
+                  "2      update-players                                   \n " \
+                  "3      report players                                   \n " \
+                  "4   replay with former players of the same tournament   \n " \
+                  "5   replay with players from different tournaments      \n" \
+                  "                                                         \n" \
+                  "                                                         \n" \
+                  "CREATE A TOURNAMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n " \
+                  "                                                         \n " \
+                  "6 create a new tournament                                \n " \
+                  "7   report => tournaments                                \n " \
+                  "8         exit                                           \n" \
+                  "                                                         \n" \
+                  " ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~~~~~~\n" \
+                  "or enter the number 7 to quit                         "
+        time.sleep(0.01)
         for char in message:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(0.0001)
+            time.sleep(0.01)
         print()
         print()
         print()
-        started = input("                   ENTER A NUMBER TO START            =>: ")
-        time.sleep(0)
+        started = input("ENTER A NUMBER TO START            =>: ")
+        time.sleep(0.01)
         return started
 
 
@@ -161,3 +157,5 @@ class TournamentView:
 
         print("                                 ROUND2                                             ")
         print()
+        print("new ranking")
+
