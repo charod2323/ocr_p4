@@ -1,5 +1,5 @@
 from views.MenuViews import MenuView, PlayerView, TournamentView
-
+import pprint
 
 class MenuController:
     def run(self):
@@ -14,15 +14,14 @@ class MenuController:
                     print()
                     print()
                     print()
-                    print("...........................................PLAYER NUMBER ......", i + 1)
+                    print(".PLAYER NUMBER ......", i + 1)
                     print()
                     player_view = PlayerView()
                     # Create a new player
                     player = player_view.create_new_player()
                     # Add new player to list containing all players
 
-                    ranking = player_view.verification_rank()
-                    player['ranking'] = ranking
+                    ranking = player_view.verification_rank(player)
                     players.append(player)
                 print()
                 count = 0
@@ -31,15 +30,19 @@ class MenuController:
                     count = count + 1
                     print("player", count, i)
 
-            if started == "3":
+            if started == "4":
+
                 ref_tournament = []
+                infos_winners = []
                 tournament_view = TournamentView()
                 ref = tournament_view.reference_report(players)
                 ref_tournament.append(ref_tournament)
                 players = tournament_view.run(players)
                 tournament_view.split_list(players)
-                infos_winners = tournament_view.players_face_to_face(players)
-                tournament_view.update_rawk(players,infos_winners)
+                info_winner = tournament_view.players_face_to_face(players)
+                infos_winners.append(info_winner)
+                pprint.pprint(infos_winners)
+                # tournament_view.update_rawk(players, infos_winners)
 
-            if started == "7":
+            if started == "6":
                 return

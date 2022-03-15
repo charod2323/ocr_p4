@@ -16,15 +16,13 @@ class MenuView:
                   "1   create a new players                                \n " \
                   "2      update-players                                   \n " \
                   "3      report players                                   \n " \
-                  "4   replay with former players of the same tournament   \n " \
-                  "5   replay with players from different tournaments      \n" \
                   "                                                         \n" \
                   "                                                         \n" \
                   "CREATE A TOURNAMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n " \
                   "                                                         \n " \
-                  "6 create a new tournament                                \n " \
-                  "7   report => tournaments                                \n " \
-                  "8         exit                                           \n" \
+                  "4 create a new tournament                                \n " \
+                  "5   report tournaments                                   \n " \
+                  "6         exit                                           \n" \
                   "                                                         \n" \
                   " ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~~~~~~\n" \
                   "or enter the number 7 to quit                         "
@@ -54,12 +52,9 @@ class PlayerView:
             "age": input("age?:  "),
             "birthdate": input("birthdate?:  "),
         }
-        print()
-        print("players:", player)
-        print()
         return player
 
-    def verification_rank(self):
+    def verification_rank(self,player):
         # obliger l'utilisateur à entrer un nombre < 100
         while True:
             try:
@@ -74,7 +69,9 @@ class PlayerView:
         if rank == True:
             rank = int(input("for validation retype his classification  :"))
         time.sleep(0.0001)
-        return rank
+        player['ranking'] = rank
+        print(player)
+        return player
 
 
 class TournamentView:
@@ -143,16 +140,18 @@ class TournamentView:
             # afficher la variable "lastname" des deux joueurs opposés
             print(players[i]['lastname'], "    VS    ", players[i + 4]['lastname'])
             print()
-            info_winner = {"lastname_winner": input(" note the name of the winning player:  "),
-                           "score_winner": input(" note the score of the winning player:  ")}
+            info_winner ={"winner_nameinput": input("which is the winner (type 1 for player 1 or 2 for player 2 or 3 for egality):  "),
+                          "winner_score": input("which is the winner's score or the tie score:  ")}
             infos_winners.append(info_winner)
             print()
             print()
-        # afficher le contenu players ligne par ligne
-        for i in infos_winners:
-            print(i)
-
         return infos_winners
+
+        # afficher le contenu players ligne par ligne
+        #for i in infos_winners:
+        #    print(i)
+
+
     def update_rawk(self, players,infos_winners):
 
         print("                                 ROUND2                                             ")
