@@ -2,30 +2,30 @@ import sys
 import time
 
 
-# from itertools import islice
-
-
 class MenuView:
     def run(self):
+        """Creation menu"""
         print()
         print()
-        print("CHESS TOURNAMENT              ")
+        print("CHESS TOURNAMENT                    ")
         print()
-        message = " CREATE A NEW PLAYER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n " \
-                  "                                                        \n " \
-                  "1   create a new players                                \n " \
-                  "2      update-players                                   \n " \
-                  "3      report players                                   \n " \
-                  "                                                         \n" \
-                  "                                                         \n" \
-                  "CREATE A TOURNAMENT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n " \
-                  "                                                         \n " \
-                  "4 create a new tournament                                \n " \
-                  "5   report tournaments                                   \n " \
-                  "6         exit                                           \n" \
-                  "                                                         \n" \
-                  " ENTER THE NUMBER ONE TO START ~~~~~~~~~~~~~~~~~~~~~~~~~~\n" \
-                  "or enter the number 7 to quit                         "
+        message = " CREATE A NEW PLAYER ~~~~~~~~~\n " \
+                  "                                \n " \
+                  "1   create a new players        \n " \
+                  "2      update-players           \n " \
+                  "3      report players           \n " \
+                  "                                \n" \
+                  "                                \n" \
+                  "                                \n" \
+                  "CREATE A TOURNAMENT ~~~~~~~~~~\n " \
+                  "                                \n " \
+                  "4 create a new tournament       \n " \
+                  "5   report tournaments          \n " \
+                  "6         exit                  \n" \
+                  "                                \n" \
+                  "                                 \n" \
+                  " ENTER THE NUMBER ONE TO START ~~\n" \
+                  "or enter the number 7 to quit    "
         time.sleep(0.01)
         for char in message:
             sys.stdout.write(char)
@@ -34,7 +34,7 @@ class MenuView:
         print()
         print()
         print()
-        started = input("ENTER A NUMBER TO START            =>: ")
+        started = input("ENTER A NUMBER TO START      =>: ")
         time.sleep(0.01)
         return started
 
@@ -42,7 +42,7 @@ class MenuView:
 class PlayerView:
 
     def create_new_player(self):
-
+        """creation new player"""
         player = {}
         print()
         print()
@@ -54,8 +54,8 @@ class PlayerView:
         }
         return player
 
-    def verification_rank(self,player):
-        # obliger l'utilisateur à entrer un nombre < 100
+    def verification_rank(self, player):
+        """force the user to enter a number less than 100"""
         while True:
             try:
                 rank = int(input("rank/100 ?:  "))
@@ -76,43 +76,42 @@ class PlayerView:
 
 class TournamentView:
     def reference_report(self, players):
+        """information request spins"""
         print()
-        ref_tournament = {'name_tournament': input("            name tournament??:  "),
-                          'location_tournament': input("                   location_tournament??:  "),
-                          'date_tournament': input("                       date_tournament??:  "),
-                          'description_tournament': input("               description_tournament:  "),
-                          'control_time': input("                         bullet or blitz ou un coup rapide??:  "),
+        ref_tournament = {'name_tournament': input("name tournament??:  "),
+                          'location_tournament': input("location_tournament??:  "),
+                          'date_tournament': input("date_tournament??:  "),
+                          'description_tournament': input("description_tournament:  "),
+                          'control_time': input("bullet or blitz ou un coup rapide??:  "),
                           'player': players}
         print()
         print()
         return ref_tournament
 
     def run(self, players):
+        """listing players in descending ranking mode"""
         print()
         print()
-        print("------------------------------ THE TOURNAMENT BEGINS  -------------------------------------\n")
+        print("THE TOURNAMENT BEGINS  -------------------------------------\n")
         print()
         print()
         print()
-        print("-----------------LISTING OF PLAYERS ACCORDING TO THEIR RANKING-----------------------------------\n")
+        print("LISTING OF PLAYERS ACCORDING TO THEIR RANKING-----------------------------------\n")
         print()
-        print("                           in descending order                      ")
+        print("in descending order                      ")
         print()
-
-        # fonction qui trie chaques dictionnaires(dans la liste players)
-        # en mode décroissant par rapport à leur classement
         def rank(e):
             return e['ranking']
 
         players.sort(reverse=True, key=rank)
         count = 0
-        # afficher le contenu players ligne par ligne
         for i in players:
             count = count + 1
             print("player", count, i)
         return players
 
     def split_list(self, players):
+        """creation of 2 groups of players"""
         print()
         print("+++++++++++++++++++++++++++++++++++++++   ROUND1   +++++++++++++++++++++++++++++++++++++++++++++\n")
         print()
@@ -129,32 +128,22 @@ class TournamentView:
         print()
 
     def players_face_to_face(self, players):
-        info_winner = {}
-        infos_winners = []
+        """match and scores"""
+        info_winners = []
+        info_scores = []
         for i in range(4):
             print()
             print()
             print("      MATCH  ", i + 1, "                                                    \n")
             print()
             print()
-            # afficher la variable "lastname" des deux joueurs opposés
             print(players[i]['lastname'], "    VS    ", players[i + 4]['lastname'])
             print()
-            info_winner ={"winner_nameinput": input("which is the winner (type 1 for player 1 or 2 for player 2 or 3 for egality):  "),
-                          "winner_score": input("which is the winner's score or the tie score:  ")}
-            infos_winners.append(info_winner)
-            print()
-            print()
-        return infos_winners
-
-        # afficher le contenu players ligne par ligne
-        #for i in infos_winners:
-        #    print(i)
-
-
-    def update_rawk(self, players,infos_winners):
-
-        print("                                 ROUND2                                             ")
-        print()
-        print("new ranking")
-
+            number_winner = input("which is the winner (type 1 for player 1 or 2 for player 2 or 3 for egality):  ")
+            score_winner = input("which score(1 for winner or 0.5 for egality):  ")
+            if number_winner == "1":
+                number_winner = players[int(number_winner) - 1]['lastname']
+                print(number_winner)
+            if number_winner == "2":
+                number_winner = players[int(number_winner) + 2]['lastname']
+                print(number_winner)
