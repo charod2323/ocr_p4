@@ -1,4 +1,4 @@
-import sys
+# import sys
 import time
 
 
@@ -26,16 +26,16 @@ class MenuView:
                   "                                 \n" \
                   " ENTER THE NUMBER ONE TO START ~~\n" \
                   "or enter the number 7 to quit    "
-        time.sleep(0.01)
-        for char in message:
-            sys.stdout.write(char)
-            sys.stdout.flush()
-            time.sleep(0.01)
+        # time.sleep(0.01)
+        # for char in message:
+        # sys.stdout.write(char)
+        # sys.stdout.flush()
+        # time.sleep(0.01)
         print()
         print()
         print()
         started = input("ENTER A NUMBER TO START      =>: ")
-        time.sleep(0.01)
+        # time.sleep(0.01)
         return started
 
 
@@ -100,6 +100,7 @@ class TournamentView:
         print()
         print("in descending order                      ")
         print()
+
         def rank(e):
             return e['ranking']
 
@@ -130,7 +131,9 @@ class TournamentView:
     def players_face_to_face(self, players):
         """match and scores"""
         info_winners = []
-        info_scores = []
+        info_egality = []
+        infos_egalitys = []
+        update = []
         for i in range(4):
             print()
             print()
@@ -139,11 +142,24 @@ class TournamentView:
             print()
             print(players[i]['lastname'], "    VS    ", players[i + 4]['lastname'])
             print()
-            number_winner = input("which is the winner (type 1 for player 1 or 2 for player 2 or 3 for egality):  ")
-            score_winner = input("which score(1 for winner or 0.5 for egality):  ")
-            if number_winner == "1":
-                number_winner = players[int(number_winner) - 1]['lastname']
-                print(number_winner)
-            if number_winner == "2":
-                number_winner = players[int(number_winner) + 2]['lastname']
-                print(number_winner)
+            winner_infos = input("is there equality enter yes or no:  ")
+            if winner_infos == "yes":
+                print(players[i]['lastname'], "    VS    ", players[i + 4]['lastname'], "=>   EGALITY   ")
+                info_egality.append(players[i]['lastname'])
+                info_egality.append(players[i + 4]['lastname'])
+                infos_egalitys.append(info_egality)
+            else:
+                print()
+                winner_info = input("who is the winner enter 1 for player one and 2 for player two")
+                if winner_info == str(1):
+                    player1 = players[i]['lastname']
+                    print("so the winner is",player1)
+                    info_winners.append(players[i]['lastname'])
+
+                else:
+                    player2 = players[i + 4]['lastname']
+                    print("so th winner is",player2)
+                    info_winners.append(players[i + 4]['lastname'])
+
+    def update_ranking(self):
+        pass
