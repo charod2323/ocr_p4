@@ -163,3 +163,6 @@ class TournamentView:
 
     def update_ranking(self):
         pass
+
+    def report(self):
+        pass
