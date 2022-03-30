@@ -1,8 +1,10 @@
-from tinydb import TinyDB
+from tinydb import TinyDB, Query
 
 
 class Player:
-    def __init__(self, lastname, firstname, age, birth_date, birth_month, birth_year, sex):
+    def __init__(
+        self, lastname, firstname, age, birth_date, birth_month, birth_year, sex
+    ):
         self.lastname = lastname
         self.firstname = firstname
         self.age = age
@@ -23,7 +25,7 @@ class Player:
             "birth_date": self.birth_date,
             "birth_month": self.birth_month,
             "birth_year": self.birth_year,
-            "sex": self.sex
+            "sex": self.sex,
         }
 
     def save_to_tiny_db(self):
@@ -31,15 +33,28 @@ class Player:
 
         :return:
         """
-        db = TinyDB('db.json')
-        players_table = db.table('players')
+        db = TinyDB("db.json")
+        players_table = db.table("players")
         players_table.insert(self.get_serialized_player())
 
     @classmethod
     def get_all_players_from_db(cls):
-        db = TinyDB('db.json')
-        players_table = db.table('players')
+        db = TinyDB("db.json")
+        players_table = db.table("players")
         return players_table.all()
+
+    @classmethod
+    def get_player_by_lastname(cls, lastname):
+        """
+
+        :param lastname:
+        :return:
+        """
+        q = Query()
+        db = TinyDB("db.json")
+        print(db)
+        print("lastname:", lastname)
+        return db.search(q.players.lastname==lastname)
 
     @classmethod
     def save_players(cls, serialized_players):
@@ -48,7 +63,6 @@ class Player:
         :param serialized_players:
         :return:
         """
-        db = TinyDB('db.json')
-        players_table = db.table('players')
+        db = TinyDB("db.json")
+        players_table = db.table("players")
         players_table.insert_multiple(serialized_players)
-
