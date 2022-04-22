@@ -3,7 +3,7 @@ from tinydb import TinyDB, Query
 
 class Player:
     def __init__(
-        self, lastname, firstname, age, birth_date, birth_month, birth_year, sex
+        self, lastname, firstname, age, birth_date, birth_month, birth_year, sex, identifier
     ):
         self.lastname = lastname
         self.firstname = firstname
@@ -12,6 +12,7 @@ class Player:
         self.birth_month = birth_month
         self.birth_year = birth_year
         self.sex = sex
+        self.identifier = identifier
 
     def get_serialized_player(self):
         """
@@ -26,6 +27,7 @@ class Player:
             "birth_month": self.birth_month,
             "birth_year": self.birth_year,
             "sex": self.sex,
+            "identifier":self.identifier,
         }
 
     def save_to_tiny_db(self):
@@ -66,3 +68,23 @@ class Player:
         db = TinyDB("db.json")
         players_table = db.table("players")
         players_table.insert_multiple(serialized_players)
+
+
+
+if __name__ == "__main__":
+    p1 = Player(
+    lastname = input("lastname?"),
+    firstname = "john",
+    age = "35",
+    birth_date ="29",
+    birth_month = "12",
+    birth_year = "80",
+    sex = "m",
+    identifier = "23"
+    )
+    p1.save_to_tiny_db()
+    print("Voici tous les joueurs enregistrés dans la db : ")
+    players = Player.get_all_players_from_db()
+    for t in players:
+        print("===================")
+        print(t)

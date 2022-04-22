@@ -30,8 +30,7 @@ class MenuController:
                     count = count + 1
                     print("player", count, i)
 
-            if started == "4":
-
+            if started == "3":
                 ref_tournament = []
                 infos_winners = []
                 tournament_view = TournamentView()
@@ -41,15 +40,5 @@ class MenuController:
                 tournament_view.split_list(players)
                 infos_winners = tournament_view.players_face_to_face(players)
 
-
-
-                # tournament_view.update_rawk(players, infos_winners)
-                """
-                name_winner = info_winner["winner_name"]
-                score_winner = info_winner["winner_score"]
-                if name_winner == 1:
-                    name_winner = players[i]['lastname']
-                    print('the winner is:  ', name_winner)
-                """
-            if started == "6":
+            if started == "5":
                 return

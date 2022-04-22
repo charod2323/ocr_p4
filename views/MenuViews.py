@@ -12,20 +12,20 @@ class MenuView:
         message = " CREATE A NEW PLAYER ~~~~~~~~~\n " \
                   "                                \n " \
                   "1   create a new players        \n " \
-                  "2      update-players           \n " \
-                  "3      report players           \n " \
+                  "2      report players           \n " \
                   "                                \n" \
                   "                                \n" \
                   "                                \n" \
                   "CREATE A TOURNAMENT ~~~~~~~~~~\n " \
                   "                                \n " \
-                  "4 create a new tournament       \n " \
-                  "5   report tournaments          \n " \
-                  "6         exit                  \n" \
+                  "3 create a new tournament       \n " \
+                  "4   report tournaments          \n " \
+                  "5         exit                  \n" \
                   "                                \n" \
                   "                                 \n" \
                   " ENTER THE NUMBER ONE TO START ~~\n" \
                   "or enter the number 7 to quit    "
+        print(message)
         # time.sleep(0.01)
         # for char in message:
         # sys.stdout.write(char)
