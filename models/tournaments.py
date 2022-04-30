@@ -54,20 +54,3 @@ class Tournament:
         return tournaments_table.all()
 
 
-if __name__ == "__main__":
-    t1 = Tournament(
-        name="Tournoi test adam",
-        place="Bagnolet",
-        dated="2022-03-26",
-        number_of_turns="4",
-        tour="1",
-        players="p4, p5",
-        time_control="bullet",
-        description="description du tournoi adam",
-    )
-    t1.save_to_tiny_db()
-    print("Voici tous les tournois enregistrés dans la db : ")
-    tournaments = Tournament.get_all_tournaments_from_db()
-    for t in tournaments:
-        print("===================")
-        print(t)

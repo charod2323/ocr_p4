@@ -9,38 +9,67 @@ class MenuView:
         print()
         print("CHESS TOURNAMENT                    ")
         print()
-        message = " CREATE A NEW PLAYER ~~~~~~~~~\n " \
-                  "                                \n " \
-                  "1   create a new players        \n " \
-                  "2      report players           \n " \
-                  "                                \n" \
-                  "                                \n" \
-                  "                                \n" \
-                  "CREATE A TOURNAMENT ~~~~~~~~~~\n " \
-                  "                                \n " \
-                  "3 create a new tournament       \n " \
-                  "4   report tournaments          \n " \
-                  "5         exit                  \n" \
-                  "                                \n" \
-                  "                                 \n" \
-                  " ENTER THE NUMBER ONE TO START ~~\n" \
-                  "or enter the number 7 to quit    "
+        message = "                                  \n " \
+                  "1   ENTER THE PLAYERS SUBMENU     \n " \
+                  "2   ENTER THE TOURNAMENTS SUBMENU \n " \
+                  "3   ENTER THE RAPPORTS SUBMENU    \n " \
+                  "4          EXIT                   \n " \
+                  "                                  \n " \
+
         print(message)
-        # time.sleep(0.01)
-        # for char in message:
-        # sys.stdout.write(char)
-        # sys.stdout.flush()
-        # time.sleep(0.01)
         print()
         print()
         print()
         started = input("ENTER A NUMBER TO START      =>: ")
-        # time.sleep(0.01)
         return started
+
+    def submenu_players(self):
+        """Creation submenu_players"""
+        message1 = "                                  \n " \
+                   "1.0   create a player               \n " \
+                   "1.1   update a player from his id   \n " \
+                   "1.2   display a player from his id  \n " \
+                   "1.3   delete a player from his id   \n " \
+
+        print(message1)
+        print()
+        print()
+        print()
+        started1 = input("ENTER A CODE NUMBER       =>: ")
+        return started1
+
+    def submenu_tournaments(self):
+        """Creation submenu_tournament"""
+        message2 = "                                      \n " \
+                   "1   create a tournament               \n " \
+                   "2   update a tournament from his id   \n " \
+                   "3   display a tournament from his id  \n " \
+                   "4   delete a tournament from his id   \n " \
+
+        print(message2)
+        print()
+        print()
+        print()
+        started2 = input("ENTER A NUMBER TO START      =>: ")
+        return started2
+
+    def submenu_rapports(self):
+        """Creation submenu_rapport"""
+        message3 = "                                      \n " \
+                   "1   create a rapport                  \n " \
+                   "2   update a rapport from his id      \n " \
+                   "3   display a rapport from his id     \n " \
+                   "4   delete a rapport from his id      \n " \
+
+        print(message3)
+        print()
+        print()
+        print()
+        started3 = input("ENTER A NUMBER TO START      =>: ")
+        return started3
 
 
 class PlayerView:
-
     def create_new_player(self):
         """creation new player"""
         player = {}
@@ -50,7 +79,11 @@ class PlayerView:
             "lastname": input("lastname?:  "),
             "firstname": input("firstname?:  "),
             "age": input("age?:  "),
-            "birthdate": input("birthdate?:  "),
+            "birth_date": input("birthdate?:  "),
+            "birth_month": input("birth_month?:  "),
+            "birth_year": input("birth_year?:  "),
+            "sex": input("sex?:  "),
+            "identifier": input("identifier?:  "),
         }
         return player
 
@@ -153,12 +186,12 @@ class TournamentView:
                 winner_info = input("who is the winner enter 1 for player one and 2 for player two")
                 if winner_info == str(1):
                     player1 = players[i]['lastname']
-                    print("so the winner is",player1)
+                    print("so the winner is", player1)
                     info_winners.append(players[i]['lastname'])
 
                 else:
                     player2 = players[i + 4]['lastname']
-                    print("so th winner is",player2)
+                    print("so th winner is", player2)
                     info_winners.append(players[i + 4]['lastname'])
 
     def update_ranking(self):
