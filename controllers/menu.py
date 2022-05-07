@@ -1,6 +1,6 @@
 from models.players import Player
-from views.MenuViews import MenuView, PlayerView, TournamentView
-
+from views.MenuViews import MenuView, PlayerView
+#from tinydb import TinyDB, Query
 
 # from pprint import pprint
 
@@ -21,7 +21,7 @@ class MenuController:
                 player_infos = player_view.create_new_player()
 
 
-
+                print()
                 print("player_infos:", player_infos)
                 new_player = Player(
                     lastname=player_infos["lastname"],
@@ -33,10 +33,15 @@ class MenuController:
                     sex=player_infos["sex"],
                     identifier=player_infos["identifier"],
                 )
+                print()
+                print()
                 print("new_player:", new_player)
                 # Save the new player into the database
                 new_player.save_to_tiny_db()
+                print("Voici tous les joueurs enregistrés dans la db : ")
 
+
+"""
             if started == "3":
                 ref_tournament = []
                 infos_winners = []
@@ -49,3 +54,4 @@ class MenuController:
 
             if started == "4":
                 return
+"""

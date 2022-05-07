@@ -1,6 +1,7 @@
 from tinydb import TinyDB, Query
 
 
+
 class Player:
     def __init__(
             self, lastname, firstname, age, birth_date, birth_month, birth_year, sex, identifier
@@ -68,3 +69,23 @@ class Player:
         db = TinyDB("db.json")
         players_table = db.table("players")
         players_table.insert_multiple(serialized_players)
+
+    def display_all_players(self):
+        p1 = Player(
+            lastname=input("lastname?"),
+            firstname="john",
+            age="35",
+            birth_date="29",
+            birth_month="12",
+            birth_year="80",
+            sex="m",
+            identifier="23"
+        )
+        p1.save_to_tiny_db()
+        print("Voici tous les joueurs enregistrés dans la db : ")
+        players = Player.get_all_players_from_db()
+        for t in players:
+            print("===================")
+            print(t)
+
+
